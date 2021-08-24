@@ -81,7 +81,15 @@ registrationControls:
     isButton: false
     label: Войти
 ---
-<section class="section-wrapper">
-  {{> title label='Регистрация' }}
-  {{> form formName=registrationFormName formData=registrationData controls=registrationControls }}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="section-wrapper">
+    {{> title label='Регистрация' }}
+    {{> form formName=registrationFormName formData=registrationData controls=registrationControls }}
+  </section>
+</main>
+</body>
+</html>

@@ -67,26 +67,34 @@ profileEditDataControls:
     isButton: false
     label: Назад в профиль
 ---
-<section class="profile-wrapper">
-  {{> buttonLeftSide href='chat' }}
-  <div class="profile-inner">
-    {{> title label='Редактирование данных в профиле' }}
-    <div class="profile">
-      <div class="profile__left">
-        {{> avatar }}
-        <div class="profile__controls">
-          {{#each profileEditDataControls}}
-          {{#if this.isButton }}
-          {{> button }}
-          {{else}}
-          {{> buttonLink }}
-          {{/if}}
-          {{/each}}
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="profile-wrapper">
+    {{> buttonLeftSide href='chat' }}
+    <div class="profile-inner">
+      {{> title label='Редактирование данных в профиле' }}
+      <div class="profile">
+        <div class="profile__left">
+          {{> avatar }}
+          <div class="profile__controls">
+            {{#each profileEditDataControls}}
+            {{#if this.isButton }}
+            {{> button }}
+            {{else}}
+            {{> buttonLink }}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile__right">
+          {{> formProfile formName=profileEditDataFormName formData=profileEditDataData }}
         </div>
       </div>
-      <div class="profile__right">
-        {{> formProfile formName=profileEditDataFormName formData=profileEditDataData }}
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
+</body>
+</html>

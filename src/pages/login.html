@@ -35,7 +35,15 @@ loginControls:
     isButton: false
     label: Ещё не зарегистрированы?
 ---
-<section class="section-wrapper">
-  {{> title label='Авторизация' }}
-  {{> form formName=loginFormName formData=loginData controls=loginControls }}
-</section>
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="section-wrapper">
+    {{> title label='Авторизация' }}
+    {{> form formName=loginFormName formData=loginData controls=loginControls }}
+  </section>
+</main>
+</body>
+</html>

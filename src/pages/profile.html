@@ -72,26 +72,34 @@ profileControls:
     label: Выйти
     extendClass: red
 ---
-<section class="profile-wrapper">
-  {{> buttonLeftSide href='chat' }}
-  <div class="profile-inner">
-    {{> title label='Профиль' }}
-    <div class="profile">
-      <div class="profile__left">
-        {{> avatar }}
-        <div class="profile__controls">
-          {{#each profileControls}}
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="profile-wrapper">
+    {{> buttonLeftSide href='chat' }}
+    <div class="profile-inner">
+      {{> title label='Профиль' }}
+      <div class="profile">
+        <div class="profile__left">
+          {{> avatar }}
+          <div class="profile__controls">
+            {{#each profileControls}}
             {{#if this.isButton }}
-              {{> button }}
+            {{> button }}
             {{else}}
-              {{> buttonLink }}
+            {{> buttonLink }}
             {{/if}}
-          {{/each}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile__right">
+          {{> formProfile formName=profileFormName formData=profileData }}
         </div>
       </div>
-      <div class="profile__right">
-        {{> formProfile formName=profileFormName formData=profileData }}
-      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
+</body>
+</html>
