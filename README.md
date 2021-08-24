@@ -5,7 +5,6 @@
 Во 2 спринте из проекта эта страница будет удалена.
 
 # Команды для запуска
-
 - Сборка dev версии `yarn start || npm run start` 
 - Сборка build `yarn build || npm run build` 
 - Запуск из под Express `yarn server || npm run server`
@@ -17,3 +16,7 @@
 - Chat - перерисованный мной макет
 - Modules - тут я попытался реализовать переиспользуемые компоненты
 - Color - цвета, которые я использую в проекте
+
+# Ссылка на [Netlify](https://trusting-shannon-d97b93.netlify.app/)
+# Ссылки на ```pull request```
+- [sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/tree/sprint_1)
