@@ -1,0 +1,41 @@
+---
+loginFormName: login
+loginData:
+  0:
+    name: login
+    type: text
+    label: Логин
+    error: false
+    errorDescription: Неверный логин
+    hint: false
+    placeholder: Введите логин
+    autocomplete: false
+    disabled: false
+  1:
+    name: password
+    type: password
+    label: Пароль
+    error: false
+    errorDescription: Неверный пароль
+    hint: false
+    placeholder: Введите пароль
+    autocomplete: false
+    disabled: false
+loginControls:
+  0:
+    name: login
+    type: submit
+    isButton: true
+    label: Войти
+    disabled: true
+    form: login
+  1:
+    name: registration
+    href: registration
+    isButton: false
+    label: Ещё не зарегистрированы?
+---
+<section class="section-wrapper">
+  {{> title label='Авторизация' }}
+  {{> form formName=loginFormName formData=loginData controls=loginControls }}
+</section>
