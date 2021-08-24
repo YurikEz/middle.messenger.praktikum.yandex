@@ -1,0 +1,105 @@
+---
+profileFormName: profile
+profileData:
+  0:
+    name: email
+    type: email
+    label: Почта
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+    value: yuelmanov@mail.com
+  1:
+    name: login
+    type: text
+    label: Логин
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+    value: yuelmanov
+  2:
+    name: first_name
+    type: text
+    label: Имя
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+    value: Юра
+  3:
+    name: second_name
+    type: text
+    label: Фамилия
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+    value: Елманов
+  4:
+    name: display_name
+    type: text
+    label: Имя в чате
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+  5:
+    name: phone
+    type: tel
+    label: Телефон
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: true
+    value: +79999999999
+profileControls:
+  0:
+    name: editProfile
+    href: profile/edit/data
+    isButton: false
+    label: Изменить данные
+  1:
+    name: editPassword
+    href: profile/edit/password
+    isButton: false
+    label: Изменить пароль
+  2:
+    name: exit
+    href: login
+    isButton: false
+    label: Выйти
+    extendClass: red
+---
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="profile-wrapper">
+    {{> buttonLeftSide href='chat' }}
+    <div class="profile-inner">
+      {{> title label='Профиль' }}
+      <div class="profile">
+        <div class="profile__left">
+          {{> avatar }}
+          <div class="profile__controls">
+            {{#each profileControls}}
+            {{#if this.isButton }}
+            {{> button }}
+            {{else}}
+            {{> buttonLink }}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile__right">
+          {{> formProfile formName=profileFormName formData=profileData }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

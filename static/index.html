@@ -1,0 +1,41 @@
+---
+nav:
+  0:
+    href: login
+    label: Авторизация
+  1:
+    href: registration
+    label: Регистрация
+  2:
+    href: chat
+    label: Чат
+  3:
+    href: profile
+    label: Профиль
+  4:
+    href: 404
+    label: 404
+  5:
+    href: 500
+    label: 500
+---
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="welcome section-wrapper">
+    {{> title label='Добро пожаловать в чат' }}
+    <nav class="nav">
+      <ul class="nav__ul">
+        {{#each nav}}
+          <li class="nav__li">
+            {{> buttonLink }}
+          </li>
+        {{/each}}
+      </ul>
+    </nav>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,100 @@
+---
+profileEditDataFormName: editData
+profileEditDataData:
+  0:
+    name: email
+    type: email
+    label: Почта
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+    value: yuelmanov@mail.com
+  1:
+    name: login
+    type: text
+    label: Логин
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+    value: yuelmanov
+  2:
+    name: first_name
+    type: text
+    label: Имя
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+    value: Юра
+  3:
+    name: second_name
+    type: text
+    label: Фамилия
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+    value: Елманов
+  4:
+    name: display_name
+    type: text
+    label: Имя в чате
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+  5:
+    name: phone
+    type: tel
+    label: Телефон
+    error: false
+    hint: false
+    autocomplete: false
+    disabled: false
+    value: +79999999999
+profileEditDataControls:
+  0:
+    name: save
+    type: submit
+    isButton: true
+    label: Сохранить
+    form: editData
+  1:
+    name: profile
+    href: profile
+    isButton: false
+    label: Назад в профиль
+---
+<!DOCTYPE html>
+<html lang="en">
+{{> head }}
+<body>
+<main id="root" class="default-wrapper">
+  <section class="profile-wrapper">
+    {{> buttonLeftSide href='chat' }}
+    <div class="profile-inner">
+      {{> title label='Редактирование данных в профиле' }}
+      <div class="profile">
+        <div class="profile__left">
+          {{> avatar }}
+          <div class="profile__controls">
+            {{#each profileEditDataControls}}
+            {{#if this.isButton }}
+            {{> button }}
+            {{else}}
+            {{> buttonLink }}
+            {{/if}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="profile__right">
+          {{> formProfile formName=profileEditDataFormName formData=profileEditDataData }}
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

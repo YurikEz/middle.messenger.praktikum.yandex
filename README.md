@@ -19,4 +19,4 @@
 
 # Ссылка на [Netlify](https://trusting-shannon-d97b93.netlify.app/)
 # Ссылки на ```pull request```
-- [sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/1)
+[sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/1)

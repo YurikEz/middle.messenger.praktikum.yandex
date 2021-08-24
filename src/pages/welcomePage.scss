@@ -1,0 +1,26 @@
+.welcome {
+  padding: 30px 35px;
+
+  .button-link {
+    background-color: var(--bdazzledBlue);
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+}
+
+.nav__ul {
+  padding: 0;
+  margin: 0;
+}
+
+.nav__li {
+  max-width: 130px;
+  width: 100%;
+  text-align: center;
+  list-style: none;
+  margin: 0 auto 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

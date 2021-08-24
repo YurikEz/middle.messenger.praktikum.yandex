@@ -1,0 +1,27 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "Chat for YaPracticum",
+  "main": "static/index.html",
+  "repository": "https://github.com/YurikEz/middle.messenger.praktikum.yandex/",
+  "author": "Elmanov Yurik",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel static/index.html -p 3000",
+    "build": "parcel build static/index.html",
+    "server": "node server"
+  },
+  "engines": {
+    "node": ">=12.x"
+  },
+  "devDependencies": {
+    "@inventory/parcel-plugin-handlebars": "^1.0.0",
+    "express": "^4.17.1",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "parcel": "^2.0.0-nightly.801",
+    "postcss": "^8.3.6",
+    "sass": "^1.38.0"
+  }
+}

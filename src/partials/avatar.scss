@@ -1,0 +1,36 @@
+.avatar {
+  width: 200px;
+  height: 200px;
+  background-color: var(--silverSand);
+  border-radius: 60px;
+
+  margin-bottom: 30px;
+
+  will-change: background-color;
+  transition: background-color var(--defaultTransition);
+
+  &:hover,
+  &:focus-within {
+    position: relative;
+    cursor: pointer;
+    background-color: var(--davysGrey);
+
+    &:after {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      content: 'Изменить';
+
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      text-align: center;
+      font-size: 24px;
+      color: var(--silverSand);
+    }
+  }
+}
