@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Chat for YaPracticum",
   "main": "static/index.html",
-  "repository": "https://github.com/YurikEz/WebChat-with-Netlify",
+  "repository": "https://github.com/YurikEz/middle.messenger.praktikum.yandex/",
   "author": "Elmanov Yurik",
   "license": "MIT",
   "scripts": {
