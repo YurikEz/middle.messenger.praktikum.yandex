@@ -2,4 +2,6 @@
 /node_modules
 /.parcel-cache/
 /.cache/
+/postcss.config.js
+/server.js
 **/*.min.js
