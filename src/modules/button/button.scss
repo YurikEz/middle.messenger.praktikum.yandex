@@ -1,18 +1,18 @@
 .button {
-  color: var(--white);
-  padding: 5px 25px;
-  margin: 0 auto 20px;
-  outline: none;
-  border: none;
 
   background-color: var(--bdazzledBlue);
+  border: 0;
+  color: var(--white);
   font-size: var(--subtitle);
   font-weight: bold;
-  text-decoration: none;
+  margin: 0 auto 20px;
+  outline: none;
+  padding: 5px 25px;
   text-align: center;
+  text-decoration: none;
+  transition: opacity var(--defaultTransition);
 
   will-change: opacity;
-  transition: opacity var(--defaultTransition);
 
   &:hover,
   &:focus-within {
@@ -21,8 +21,8 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
     background-color: var(--silverSand);
+    cursor: not-allowed;
 
     &:hover,
     &:focus-within {

@@ -4,7 +4,8 @@
 - Prod Сборка `yarn start || npm run start`
 - Dev Сборка `yarn dev || npm run dev`
 - Запуск Express без build `yarn server || npm run server`
-- Запустить ESlint `yarn lint || npm run lint`
+- Запустить ESlint `yarn eslint || npm run eslint`
+- Запустить Stylelint `yarn stylelint || npm run stylelint`
 
 
 # Макет в [Figma](https://www.figma.com/file/rLeCAzgqTfcNl8OZZmj6se/Chat?node-id=0%3A1)
