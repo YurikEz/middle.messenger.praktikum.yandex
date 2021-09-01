@@ -3,11 +3,13 @@ import './getModules';
 import foundedInputs from './foundedInputs';
 import getRoute from './getRoute';
 import router from './router';
+import render from './render';
 import validator from './validator';
 
 document.addEventListener('DOMContentLoaded', () => {
   const route: string = getRoute();
-  router(route);
+  const page: string = router(route);
+  render(page);
 
   const buttons = document.querySelectorAll('.button');
 
