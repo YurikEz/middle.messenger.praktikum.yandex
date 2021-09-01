@@ -6,4 +6,4 @@ import range from './range';
  * @param step
  * @returns {*[]}
  */
-export default (start, end, step) => range(start, end, step, true);
+export default (start: number, end: number, step: number) => range(start, end, step, true);

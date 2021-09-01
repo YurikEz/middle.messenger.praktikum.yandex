@@ -6,7 +6,7 @@ import router from './router';
 import validator from './validator';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const route = getRoute();
+  const route: string = getRoute();
   router(route);
 
   const buttons = document.querySelectorAll('.button');

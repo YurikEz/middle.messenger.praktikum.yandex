@@ -1,8 +1,8 @@
 import myDash from '../../src/utils/mydash/index';
 
 export default () => {
-  const pathname = window.location.pathname;
-  let currentRoute;
+  const pathname: string = window.location.pathname;
+  let currentRoute: string;
 
   if (pathname.length === 1 && pathname === '/') {
     currentRoute = 'login'

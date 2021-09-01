@@ -4,7 +4,7 @@
  * @returns {[]}
  */
 export default (elements) => {
-  const result = [];
+  const result: HTMLInputElement[] = [];
 
   for (let key in elements) {
     if (elements.hasOwnProperty(key) && elements[key].classList.contains('input-field')) {
