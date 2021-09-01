@@ -16,4 +16,4 @@ export default {
   formProfile,
   input,
   title,
-}
+};

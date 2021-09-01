@@ -1,5 +1,6 @@
-import state from './getState';
 import pages from '../../src/pages';
+
+import state from './getState';
 
 export default (route) => {
   const root = document.getElementById('root');

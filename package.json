@@ -15,11 +15,13 @@
     "node": ">=12.x"
   },
   "dependencies": {
-    "handlebars": "^4.7.7",
     "express": "^4.17.1",
+    "handlebars": "^4.7.7",
     "sass": "^1.38.0"
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-static-files-copy": "^2.6.0",

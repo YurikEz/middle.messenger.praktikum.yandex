@@ -1,8 +1,8 @@
 import './getStyle';
 import './getModules';
+import foundedInputs from './foundedInputs';
 import getRoute from './getRoute';
 import router from './router';
-import foundedInputs from './foundedInputs';
 import validator from './validator';
 
 document.addEventListener('DOMContentLoaded', () => {

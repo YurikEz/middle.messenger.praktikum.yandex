@@ -1,7 +1,7 @@
 import firstItem from './firstItem';
-import lastItem from './lastItem';
 import identity from './identity';
 import isEmpty from './isEmpty';
+import lastItem from './lastItem';
 import range from './range';
 import rangeRight from './rangeRight';
 
