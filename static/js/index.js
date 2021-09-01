@@ -1,7 +1,14 @@
+import './getStyle';
+import './getModules';
+import getRoute from './getRoute';
+import router from './router';
 import foundedInputs from './foundedInputs';
 import validator from './validator';
 
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', () => {
+  const route = getRoute();
+  router(route);
+
   const buttons = document.querySelectorAll('.button');
 
   buttons.forEach(item => item.addEventListener('click', handleButtonClick));
@@ -15,4 +22,4 @@ window.onload = function () {
 
     console.log('isValidate', isValidate);
   }
-};
+});

@@ -7,9 +7,9 @@
   <section class="form__controls">
     {{#each controls}}
       {{#if this.isButton }}
-        {{> button }}
+        {{> button type=this.type disabled=this.disabled form=this.form label=this.label }}
       {{else}}
-        {{> buttonLink }}
+        {{> buttonLink label=this.label href=this.href extendClass=this.extendClass }}
       {{/if}}
     {{/each}}
   </section>

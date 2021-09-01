@@ -1,0 +1,23 @@
+<section class="profile-wrapper">
+  {{> buttonLeftSide href=this.link.href }}
+  <div class="profile-inner">
+    {{> title label=this.label extendClass='' }}
+    <div class="profile">
+      <div class="profile__left">
+        {{> avatar }}
+        <div class="profile__controls">
+          {{#each controls}}
+            {{#if this.isButton }}
+              {{> button type=this.type disabled=this.disabled form=this.form label=this.label }}
+            {{else}}
+              {{> buttonLink label=this.label href=this.href extendClass=this.extendClass }}
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="profile__right">
+        {{> formProfile formName=this.formName formData=this.data }}
+      </div>
+    </div>
+  </div>
+</section>

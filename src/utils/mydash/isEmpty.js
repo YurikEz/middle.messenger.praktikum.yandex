@@ -10,16 +10,8 @@ export default value => {
   const isBoolean = typeof value === 'boolean';
   const isNull = value === null;
 
-  if (isNull) {
-    return isNull;
-  }
-
-  if (isNumber) {
-    return isNumber;
-  }
-
-  if (isBoolean) {
-    return isBoolean;
+  if (isNull || isNumber || isBoolean) {
+    return true;
   }
 
   if (isArray) {
