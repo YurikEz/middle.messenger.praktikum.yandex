@@ -1,5 +1,5 @@
 import state from './getState';
-import pages from '../../src/pages/index';
+import pages from '../../src/pages';
 
 export default (route) => {
   const root = document.getElementById('root');
