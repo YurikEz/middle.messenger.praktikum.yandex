@@ -1,4 +1,4 @@
-import myDash from '../../src/utils/mydash/index';
+import utils from '../../src/utils/helpers';
 
 export default () => {
   const pathname: string = window.location.pathname;
@@ -7,7 +7,7 @@ export default () => {
   if (pathname.length === 1 && pathname === '/') {
     currentRoute = 'login'
   } else {
-    currentRoute = myDash.lastItem(pathname.split('/').filter(myDash.identity));
+    currentRoute = utils.lastItem(pathname.split('/').filter(utils.identity));
   }
 
   if (currentRoute === '500') {
