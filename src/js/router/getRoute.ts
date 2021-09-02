@@ -1,4 +1,4 @@
-import utils from '../../src/utils/helpers';
+import helpers from '../utils/helpers';
 
 export default () => {
   const pathname: string = window.location.pathname;
@@ -7,7 +7,7 @@ export default () => {
   if (pathname.length === 1 && pathname === '/') {
     currentRoute = 'login'
   } else {
-    currentRoute = utils.lastItem(pathname.split('/').filter(utils.identity));
+    currentRoute = helpers.lastItem(pathname.split('/').filter(helpers.identity));
   }
 
   if (currentRoute === '500') {

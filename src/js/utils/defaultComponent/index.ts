@@ -20,6 +20,7 @@ export default class DefaultComponent {
 
   constructor(
     tagName: string = "div",
+    classes: string = '',
     props: {
       [key: string]: unknown,
     } = {},
@@ -27,6 +28,7 @@ export default class DefaultComponent {
     const eventBus = new EventBus();
     this._meta = {
       tagName,
+      classes,
       props
     };
 
@@ -53,6 +55,8 @@ export default class DefaultComponent {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target: {[key: string]: unknown}, prop: string, value: unknown) {
+        console.log(value);
+        console.log(target[prop]);
         target[prop] = value;
 
         // Запускаем обновление компоненты
@@ -75,6 +79,7 @@ export default class DefaultComponent {
 
   _createResources() {
     this._element = this._createDocumentElement(this._meta.tagName);
+    this._element.classList.add(this._meta.classes);
   }
 
   _createDocumentElement(tagName: string) {
@@ -95,18 +100,16 @@ export default class DefaultComponent {
   // componentDidMount(oldProps) {}
 
   _componentDidUpdate(oldProps: unknown, newProps: unknown) {
-    const response: boolean = this.componentDidUpdate(oldProps, newProps);
-    if (!response) {
-      return;
-    }
     this._render();
   }
 
-  componentDidUpdate(oldProps: unknown, newProps: unknown) {
-    return oldProps !== newProps;
-  }
+  // componentDidUpdate() {
+  //   return true;
+  // }
 
   setProps = (nextProps: unknown) => {
+    console.log(this.props);
+    console.log(nextProps);
     if (!nextProps) {
       return;
     }
@@ -123,7 +126,9 @@ export default class DefaultComponent {
     // Используйте шаблонизатор из npm или напиши свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
+    this._element.innerHTML = '';
     this._element.innerHTML = this.render();
+    console.log(this._element);
   }
 
   render() {}
