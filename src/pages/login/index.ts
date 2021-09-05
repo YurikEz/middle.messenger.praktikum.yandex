@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars/dist/handlebars';
-import DefaultComponent from '../../js/utils/defaultComponent';
-import template from './title.tmpl';
+import Block from "../../js/utils/defaultComponent";
+import template from "./login.tmpl";
 
-class Title extends DefaultComponent {
+class Login extends Block {
   constructor(props) {
-    super('h1', props);
+    super('section', props);
   }
 
   render() {
@@ -13,4 +13,4 @@ class Title extends DefaultComponent {
   }
 }
 
-export default Title;
+export default Login;
