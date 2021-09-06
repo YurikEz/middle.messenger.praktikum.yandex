@@ -5,7 +5,7 @@ const onSubmitForm = (e: Event, inputs: NodeListOf<HTMLInputElement>) => {
   console.log('onSubmitForm', inputs);
 };
 
-export default (button: HTMLFormElement | null, inputs: NodeListOf<HTMLInputElement>) => {
+export default (button: HTMLButtonElement | null, inputs: NodeListOf<HTMLInputElement>) => {
   if (button) {
     button.addEventListener('click', (e) => onSubmitForm(e, inputs));
   }

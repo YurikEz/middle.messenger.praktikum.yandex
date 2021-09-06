@@ -9,9 +9,18 @@
   &:last-child {
     margin-bottom: 0;
   }
-}
 
-.input-field {
+  &__no-label {
+    margin: 0;
+    padding: 0;
+
+    .input-field {
+      &__label {
+        display: none;
+      }
+    }
+  }
+
   &__label {
     color: var(--davysGrey);
     font-size: var(--subtitle);

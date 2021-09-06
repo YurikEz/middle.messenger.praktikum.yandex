@@ -3,7 +3,9 @@ import Chat from '../../components/chat/';
 import OpenChat from '../../components/open-chat/';
 import Message from '../../components/message/';
 import InputSearch from '../../components/input-search/';
+import Input from '../../components/input/';
 import ButtonLink from '../../components/button-link';
+import ButtonSend from '../../components/button-send';
 import createElement from "../../js/utils/createElement";
 import formatDate from "../../js/utils/formatDate";
 
@@ -29,6 +31,13 @@ const messages = localState.selectedChat.messages.map(message => new Message({
 const openChat = new OpenChat({
   selectedChat: localState.selectedChat,
   messages,
+  inputMessage: new Input({
+    type: 'text',
+    name: 'message',
+    placeholder: 'Сообщение',
+    isNotLabel: true,
+  }).render(),
+  buttonSend: new ButtonSend({}).render(),
 }).render();
 
 const template = `

@@ -23,10 +23,8 @@ export default () => `
         <button class="open-chat__button-upload" type="button">
           <img src="/image/icons/upload.svg" alt="upload">
         </button>
-        <input class="open-chat__input" type="text" name="message" placeholder="Сообщение">
-        <button class="open-chat__button-send" type="button">
-          <img src="/image/icons/send.svg" alt="send">
-        </button>
+        {{ this.inputMessage }}
+        {{ this.buttonSend }}
       </div>
     {{else}}
       <div class="open-chat__empty">
