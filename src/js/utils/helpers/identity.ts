@@ -3,4 +3,4 @@
  * @param value
  * @returns {*}
  */
-export default value => value;
+export default (value: unknown) => value;

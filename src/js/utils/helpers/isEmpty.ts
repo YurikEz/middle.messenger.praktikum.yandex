@@ -3,7 +3,7 @@
  * @param value
  * @returns {boolean}
  */
-export default value => {
+export default (value: any) => {
   const isArray = Array.isArray(value);
   const isObject = typeof value === 'object';
   const isNumber = typeof value === 'number';

@@ -3,4 +3,4 @@
  * @param value
  * @returns { Boolean }
  */
-export default value => Array.isArray(value);
+export default (value: unknown) => Array.isArray(value);

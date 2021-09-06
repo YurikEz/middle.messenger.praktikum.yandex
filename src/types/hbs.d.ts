@@ -1,4 +1,1 @@
-declare module "*.hbs" {
-  const content: string;
-  export default content;
-}
+declare module 'handlebars/dist/handlebars';

@@ -3,7 +3,7 @@ import DefaultComponent from '../../js/utils/default-component';
 import template from './index.tmpl';
 
 export default class Title extends DefaultComponent {
-  constructor(props) {
+  constructor(props: { [key: string]: unknown }) {
     super('h1', props);
     this.props = props;
   }

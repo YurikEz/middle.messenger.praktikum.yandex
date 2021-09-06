@@ -6,8 +6,8 @@ export default () => {
   document.addEventListener('DOMContentLoaded', () => {
     render(router());
 
-    const button = document.querySelector('.button');
-    const inputs = document.querySelectorAll('.input-field__input');
+    const button: HTMLFormElement | null = document.querySelector('.button');
+    const inputs: NodeListOf<HTMLInputElement> = document.querySelectorAll('.input-field__input');
 
     validator(button, inputs);
   });

@@ -3,7 +3,7 @@ import DefaultComponent from '../../js/utils/default-component';
 import template from './index.tmpls';
 
 export default class ButtonLink extends DefaultComponent {
-  constructor(props) {
+  constructor(props: { [key: string]: unknown }) {
     super('div', props);
     this.props = props;
   }

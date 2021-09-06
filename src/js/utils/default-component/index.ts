@@ -36,7 +36,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -60,7 +60,7 @@ export default class Block {
 
   // componentDidMount(oldProps) {}
 
-  _componentDidUpdate(oldProps, newProps) {
+  _componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -68,11 +68,12 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
-    return true;
+  componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }) {
+    // TODO: Правильно сравнить объекты
+    return oldProps === newProps || true;
   }
 
-  setProps = nextProps => {
+  setProps = (nextProps: unknown) => {
     if (!nextProps) {
       return;
     }
@@ -99,17 +100,17 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props: { [key: string]: unknown }) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
-        const value = target[prop];
+      get(target: { [key: string]: unknown }, prop: string) {
+        const value: unknown = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target: { [key: string]: unknown }, prop: string, value: unknown) {
         target[prop] = value;
 
         // Запускаем обновление компоненты
@@ -123,16 +124,16 @@ export default class Block {
     });
   }
 
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: string) {
     // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
     return document.createElement(tagName);
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent()!.style.display = "block";
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent()!.style.display = "none";
   }
 }

@@ -7,7 +7,7 @@ export default () => {
   if (pathname.length === 1 && pathname === '/') {
     currentRoute = 'login'
   } else {
-    currentRoute = helpers.lastItem(pathname.split('/').filter(helpers.identity));
+    currentRoute = <string>helpers.lastItem(pathname.split('/').filter(helpers.identity));
   }
 
   if (currentRoute === '500') {
