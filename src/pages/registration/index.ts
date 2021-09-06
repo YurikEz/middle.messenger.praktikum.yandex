@@ -6,8 +6,8 @@ import ButtonLink from '../../components/button-link';
 import Input from '../../components/input/';
 import createElement from "../../js/utils/createElement";
 
-const localState = state.login;
-const wrapper = createElement('section', 'login', ['section-wrapper']);
+const localState = state.registration;
+const wrapper = createElement('section', 'registration', ['section-wrapper']);
 
 const title = new Title({
   label: localState.label,

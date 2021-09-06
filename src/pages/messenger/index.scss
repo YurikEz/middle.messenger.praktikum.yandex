@@ -1,0 +1,34 @@
+.messenger {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100%;
+  height: 100vh;
+}
+
+.chats {
+  background-color: var(--bdazzledBlue);
+}
+
+.chats__header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 10px 10px;
+
+  .button-link {
+    padding: 0;
+    margin: 0;
+    color: var(--white);
+    max-width: 100px;
+  }
+}
+
+.chats__search {
+  padding: 10px 10px 20px;
+}
+
+.chats__wrapper {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: calc(100vh - 98px);
+}

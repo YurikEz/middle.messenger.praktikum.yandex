@@ -2,9 +2,9 @@ import Handlebars from 'handlebars/dist/handlebars';
 import DefaultComponent from '../../js/utils/default-component';
 import template from './index.tmpl';
 
-export default class Title extends DefaultComponent {
+export default class OpenChat extends DefaultComponent {
   constructor(props) {
-    super('h1', props);
+    super('div', props);
     this.props = props;
   }
 

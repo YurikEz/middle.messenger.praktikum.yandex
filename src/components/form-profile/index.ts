@@ -2,13 +2,14 @@ import Handlebars from 'handlebars/dist/handlebars';
 import DefaultComponent from '../../js/utils/default-component';
 import template from './index.tmpl';
 
-export default class Title extends DefaultComponent {
+export default class Form extends DefaultComponent {
   constructor(props) {
-    super('h1', props);
+    super('div', props);
+
     this.props = props;
   }
 
   render() {
-    return Handlebars.compile(template(), {noEscape: true})(this.props);
+    return Handlebars.compile(template(), { noEscape: true })(this.props);
   }
 }

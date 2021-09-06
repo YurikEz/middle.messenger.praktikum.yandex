@@ -1,16 +1,16 @@
-import _404 from './404/404.hbs';
-import _500 from './500/500.hbs';
-import chat from './chat/chat.hbs';
-import login from './login/login.hbs';
-import profileEditData from './profile/edit/data.hbs';
-import profileEditPassword from './profile/edit/password.hbs';
-import profile from './profile/profile.hbs';
-import registration from './registration/registration.hbs';
+import _404 from './404/';
+import _500 from './500/';
+import messenger from './messenger/';
+import login from './login/';
+import profileEditData from './profile-edit-data/';
+import profileEditPassword from './profile-edit-password/';
+import profile from './profile/';
+import registration from './registration/';
 
 export default {
   _404,
   _500,
-  chat,
+  messenger,
   login,
   profile,
   profileEditData,

@@ -1,0 +1,134 @@
+.chat {
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 1rem;
+  padding: 10px;
+
+  width: 100%;
+
+  outline: 0;
+  background-color: transparent;
+  border: 0;
+
+  transition: background-color var(--defaultTransition);
+
+  &:first-child {
+    border-top: 1px solid var(--silverSand);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--silverSand);
+  }
+
+  &:hover,
+  &:focus-within {
+    cursor: pointer;
+  }
+
+  &--active,
+  &:hover {
+    background-color: var(--aliceBlue);
+
+    .chat__title {
+      color: var(--black);
+    }
+
+    .chat__text {
+      color: var(--davysGrey);
+    }
+
+    .chat__date {
+      color: var(--davysGrey);
+    }
+
+    .chat__notification {
+      background-color: var(--bdazzledBlue);
+      color: var(--white);
+    }
+  }
+}
+
+.chat__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.chat__avatar-default {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--silverSand);
+}
+
+.chat__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  & > :nth-child(2) {
+    margin-top: 4px;
+  }
+}
+
+.chat__title {
+  margin: 0;
+  color: var(--white);
+  font-size: var(--subtitle);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13px;
+
+  transition: color var(--defaultTransition);
+}
+
+.chat__text {
+  margin: 0;
+  text-align: left;
+  color: var(--lightGray);
+  font-size: var(--subtitle);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15px;
+
+  transition: color var(--defaultTransition);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.chat__date {
+  margin: 0;
+  color: var(--lightGray);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--description);
+  line-height: 13px;
+  text-align: right;
+  width: 100%;
+
+  transition: color var(--defaultTransition);
+}
+
+.chat__notification-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 36px;
+  width: 100%;
+}
+
+.chat__notification {
+  margin: 0;
+  background-color: var(--aliceBlue);
+  padding: 4px 10px;
+  border-radius: 50%;
+  color: var(--davysGrey);
+
+  transition: color var(--defaultTransition), background-color var(--defaultTransition);
+}

@@ -1,0 +1,35 @@
+.message {
+  position: relative;
+  display: block;
+  padding: 11px;
+  background-color: var(--lightGray);
+  margin: 10px auto 10px 0;
+
+  &--my {
+    margin-left: auto;
+    margin-right: 0;
+    background-color: var(--aliceBlue);
+
+    .message__date {
+      color: var(--bdazzledBlue);
+    }
+  }
+}
+.message__text {
+  color: var(--black);
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--text);
+  line-height: 15px;
+}
+.message__image {}
+.message__date {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: var(--description);
+  line-height: 9px;
+  color: var(--davysGrey);
+}
