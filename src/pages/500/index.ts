@@ -4,7 +4,7 @@ import ButtonLink from '../../components/button-link';
 import createElement from "../../js/utils/createElement";
 
 const localState = state._500;
-const wrapper = createElement('section');
+const wrapper = createElement('section', null, []);
 
 const title = new Title({
   label: localState.label,

@@ -15,7 +15,7 @@ const title = new Title({
   label: localState.label,
 }).render();
 
-const avatar = new Avatar().render();
+const avatar = new Avatar({}).render();
 
 const buttonLeftSide = new ButtonLeftSide(localState.link).render();
 

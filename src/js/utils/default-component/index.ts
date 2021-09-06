@@ -8,8 +8,18 @@ export default class Block {
     FLOW_RENDER: "flow:render"
   };
 
-  _element = null;
-  _meta = null;
+  eventBus: () => EventBus;
+
+  _element: HTMLElement | null = null;
+
+  _meta: {
+    tagName: string,
+    props: Record<string, unknown>,
+  };
+
+  props: {
+    [key: string]: unknown,
+  };
 
   constructor(tagName = "div", props = {}) {
     const eventBus = new EventBus();
@@ -44,11 +54,11 @@ export default class Block {
   }
 
   _componentDidMount() {
-    this.componentDidMount();
+    // this.componentDidMount();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  componentDidMount(oldProps) {}
+  // componentDidMount(oldProps) {}
 
   _componentDidUpdate(oldProps, newProps) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -75,12 +85,12 @@ export default class Block {
   }
 
   _render() {
-    const block = this.render();
     // Этот небезопасный метод для упрощения логики
     // Используйте шаблонизатор из npm или напиши свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-    this._element.innerHTML = block;
+    // @ts-ignore
+    this._element.innerHTML = this.render();
   }
 
   render() {}
