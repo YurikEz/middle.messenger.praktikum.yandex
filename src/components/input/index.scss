@@ -1,4 +1,5 @@
 .input-field {
+  position: relative;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -56,11 +57,11 @@
     font-weight: 200;
     margin-top: 5px;
 
-    &_hint {
+    &--hint {
       color: var(--silverSand);
     }
 
-    &_error {
+    &--error {
       color: var(--redPigment);
     }
   }

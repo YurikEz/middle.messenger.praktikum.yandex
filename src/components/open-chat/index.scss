@@ -132,6 +132,15 @@
     }
   }
 
+  .input-field {
+    &__description {
+      &--error {
+        position: absolute;
+        top: 25px;
+      }
+    }
+  }
+
   &__button-send {
     align-items: center;
     background-color: var(--bdazzledBlue);

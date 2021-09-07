@@ -14,12 +14,10 @@ export default () => `
         value="{{ this.value }}"
       {{/if}}
     >
+    
     {{#if this.hint }}
-      <span class="input-field__description input-field__description_hint">{{ this.hintDescription }}</span>
+      <span class="input-field__description input-field__description--hint">{{ this.hintDescription }}</span>
     {{/if}}
-  
-    {{#if this.error }}
-      <span class="input-field__description input-field__description_error">{{ this.errorDescription }}</span>
-    {{/if}}
+    <span class="input-field__description input-field__description--error"></span>
   </label>
 `;
