@@ -1,4 +1,9 @@
 import pages from '../../pages';
 
-// @ts-ignore
-export default (route: string) => pages[route];
+export default (route: string) => {
+  const pagesTyped: {
+    [key: string]: string;
+  } = pages;
+
+  return pagesTyped[route];
+};

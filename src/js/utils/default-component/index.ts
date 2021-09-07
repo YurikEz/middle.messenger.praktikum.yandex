@@ -90,8 +90,7 @@ export default class Block {
     // Используйте шаблонизатор из npm или напиши свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-    // @ts-ignore
-    this._element.innerHTML = this.render();
+    this._element!.innerHTML = this.render() as unknown as string;
   }
 
   render() {}
