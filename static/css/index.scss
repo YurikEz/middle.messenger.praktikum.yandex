@@ -1,7 +1,7 @@
-@import './fonts.scss';
-@import './variables.scss';
-@import './defaultSettings.scss';
+@import './fonts';
+@import './variables';
+@import './defaultSettings';
 @import './normalize.css';
 
-@import '../../src/pages/index.scss';
-@import '../../src/partials/index.scss';
+@import '../../src/components/index';
+@import '../../src/pages/index';
