@@ -146,6 +146,7 @@ const onSubmitForm = (e: Event, fields: NodeListOf<HTMLInputElement>) => {
     console.log('validInputs', validInputs);
   } else {
     console.log('Заполните форму');
+    console.log('validInputs', validInputs);
   }
 };
 
