@@ -4,7 +4,7 @@
 - Prod Сборка `yarn start || npm run start`
 - Dev Сборка `yarn dev || npm run dev`
 - Запуск Express без build `yarn server || npm run server`
-- Запустить ESlint `yarn eslint || npm run eslint`
+- Запустить Eslint `yarn eslint || npm run eslint`
 - Запустить Stylelint `yarn stylelint || npm run stylelint`
 - Запустить Проверку типов `yarn tsc || npm run tsc`
 
@@ -20,3 +20,4 @@
 # Ссылка на [Netlify](https://trusting-shannon-d97b93.netlify.app/)
 # Ссылки на ```pull request```
 [sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/1)
+[sprint_2](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/)
