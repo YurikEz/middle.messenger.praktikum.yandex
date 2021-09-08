@@ -1,5 +1,6 @@
-import getRoute from "./getRoute";
 import pages from '../../pages';
+
+import getRoute from "./getRoute";
 
 /**
  * Роутер
@@ -8,7 +9,7 @@ import pages from '../../pages';
  * - Отдаем строку для render
  * @return { string } - строка для render
  */
-export default () => {
+export default (): string => {
   const route: string = getRoute();
   const checkRoute: boolean = pages.hasOwnProperty(route);
   return checkRoute ? route : '_404';

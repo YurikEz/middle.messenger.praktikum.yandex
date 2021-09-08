@@ -1,51 +1,51 @@
 const handleShowError = (field: HTMLInputElement, input: HTMLInputElement | undefined, isValid: boolean) => {
   const children = Array.from(field.children) as HTMLInputElement[];
-  const errorElement: HTMLInputElement | undefined = children.find(item => item.className.includes('input-field__description--error'));
+  const errorElement: HTMLInputElement | Record<string, unknown> = children.find(item => item.className.includes('input-field__description--error')) || {};
   const name = input?.name || '';
 
   if (isValid) {
-    errorElement!.textContent = '';
+    errorElement.textContent = '';
   } else {
     switch (name) {
       case 'first_name':
       case 'second_name':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - латиница или кириллица,' +
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - латиница или кириллица,' +
           ' первая буква должна быть' +
           ' заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)';
         break;
       case 'login':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 3 до 20 символов,' +
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 3 до 20 символов,' +
           ' латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)';
         break;
       case 'email':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - латиница, может включать' +
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - латиница, может включать' +
           ' цифры и спецсимволы вроде дефиса, обязательно должна быть «собака» (@) и точка после неё, но перед точкой обязательно должны быть буквы.';
         break;
       case 'password':
       case 'oldPassword':
       case 'newPassword':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 8 до 40 символов,' +
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 8 до 40 символов,' +
           ' обязательно хотя бы одна заглавная буква и цифра.';
         break;
       case 'passwordConfirm':
       case 'newPasswordConfirm':
-        errorElement!.textContent = 'Ошибка: пароли не совпадают.';
+        errorElement.textContent = 'Ошибка: пароли не совпадают.';
         break;
       case 'phone':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 10 до 15 символов,' +
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - от 10 до 15 символов,' +
           ' состоит из цифр, может начинается с плюса.';
         break;
       case 'message':
-        errorElement!.textContent = 'Ошибка: значение должно удовлетворять требованиям - не должно быть пустым';
+        errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - не должно быть пустым';
         break;
       default:
-        errorElement!.textContent = '';
+        errorElement.textContent = '';
         break;
     }
   }
 };
 const checkValidation = (input: HTMLInputElement | undefined) => {
-  let isValid: boolean = false;
+  let isValid = false;
   const regExp: {
     [key: string]: {
       [key: string]: RegExp;
@@ -150,7 +150,7 @@ const onSubmitForm = (e: Event, fields: NodeListOf<HTMLInputElement>) => {
   }
 };
 
-export default (button: HTMLButtonElement | null, fields: NodeListOf<HTMLInputElement>) => {
+export default (button: HTMLButtonElement | null, fields: NodeListOf<HTMLInputElement>): void => {
   if (button) {
     button.addEventListener('click', (e) => onSubmitForm(e, fields));
   }

@@ -3,7 +3,7 @@
  * @param value
  * @returns {boolean}
  */
-export default (value: any) => {
+export default (value: unknown[] | Record<string, unknown> | number | boolean | null): boolean => {
   const isArray = Array.isArray(value);
   const isObject = typeof value === 'object';
   const isNumber = typeof value === 'number';

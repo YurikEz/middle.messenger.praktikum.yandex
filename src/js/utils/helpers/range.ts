@@ -6,12 +6,12 @@
  * @param isRight
  * @returns {[]}
  */
-export default (start: number = 0, end: number = start, step: number = 1, isRight: boolean) => {
+export default (start = 0, end: number = start, step = 1, isRight: boolean): number[] => {
   const isStartAndEnd = start && end && start !== end;
   const isZeroStep = step === 0;
   const isNegative = end < 0;
 
-  let result: number[] = [];
+  const result: number[] = [];
 
   start = isStartAndEnd ? start : 0;
 

@@ -83,20 +83,23 @@
   }
 
   &__text {
-    box-orient: vertical;
     color: var(--lightGray);
 
-    display: box;
     font-size: var(--subtitle);
     font-style: normal;
     font-weight: 500;
-    -webkit-line-clamp: 2;
     line-height: 15px;
     margin: 4px 0 0;
-    overflow: hidden;
     text-align: left;
 
     transition: color var(--defaultTransition);
+
+    /* stylelint-disable */
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    /* stylelint-enable */
   }
 
   &__date {

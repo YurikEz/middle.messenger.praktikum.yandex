@@ -7,24 +7,24 @@ export default class EventBus {
     this.listeners = {};
   }
 
-  on(event: string, callback: () => unknown) {
+  on(event: string, callback: () => unknown): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: () => unknown) {
+  off(event: string, callback: () => unknown): void {
     this.checkEvent(event);
     this.listeners[event] = this.listeners[event].filter(listener => listener !== callback);
   }
 
-  emit(event: string, ...args: unknown[]) {
+  emit(event: string, ...args: unknown[]): void {
     this.checkEvent(event);
     this.listeners[event].forEach(listener => listener(...args));
   }
 
-  checkEvent(event: string) {
+  checkEvent(event: string): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }

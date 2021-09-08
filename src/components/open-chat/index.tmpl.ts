@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <div class="open-chat {{#if this.selectedChat }}open-chat--active{{/if}}">
     {{#if this.selectedChat }}
       <div class="open-chat__header">

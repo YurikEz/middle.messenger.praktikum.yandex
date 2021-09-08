@@ -1,6 +1,6 @@
-import state from '../../js/storage/state';
-import Title from '../../components/title/';
 import ButtonLink from '../../components/button-link';
+import Title from '../../components/title/';
+import state from '../../js/storage/state';
 import createElement from "../../js/utils/createElement";
 
 const localState = state._500;

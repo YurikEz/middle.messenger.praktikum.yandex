@@ -1,7 +1,8 @@
-import getTemplate from './getTemplate';
 import validator from "../utils/validator";
 
-export default (route: string) => {
+import getTemplate from './getTemplate';
+
+export default (route: string): void => {
   const root = document.getElementById('root') as HTMLDivElement;
 
   root.innerHTML = getTemplate(route);

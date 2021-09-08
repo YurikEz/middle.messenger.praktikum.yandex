@@ -1,6 +1,6 @@
 import helpers from '../utils/helpers';
 
-export default () => {
+export default (): string => {
   const pathname: string = window.location.pathname;
   let currentRoute: string;
 

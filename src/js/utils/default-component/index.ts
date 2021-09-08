@@ -10,7 +10,7 @@ export default class Block {
 
   eventBus: () => EventBus;
 
-  _element: HTMLElement | null = null;
+  _element: HTMLElement | Record<string, unknown>;
 
   _meta: {
     tagName: string,
@@ -36,31 +36,31 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus: EventBus) {
+  _registerEvents(eventBus: EventBus): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
+  _createResources(): void {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
   }
 
-  init() {
+  init(): void {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidMount() {
+  _componentDidMount(): void {
     // this.componentDidMount();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
   // componentDidMount(oldProps) {}
 
-  _componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }) {
+  _componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -68,12 +68,12 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }) {
+  componentDidUpdate(oldProps: { [key: string]: unknown }, newProps: { [key: string]: unknown }): boolean {
     // TODO: Правильно сравнить объекты
     return oldProps === newProps || true;
   }
 
-  setProps = (nextProps: unknown) => {
+  setProps = (nextProps: unknown): void => {
     if (!nextProps) {
       return;
     }
@@ -81,29 +81,27 @@ export default class Block {
     Object.assign(this.props, nextProps);
   };
 
-  get element() {
+  get element(): HTMLElement | Record<string, unknown> {
     return this._element;
   }
 
-  _render() {
+  _render(): void {
     // Этот небезопасный метод для упрощения логики
     // Используйте шаблонизатор из npm или напиши свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы превращать из возвращать из compile DOM-ноду
-    this._element!.innerHTML = this.render() as unknown as string;
+    this._element.innerHTML = this.render() as unknown as string;
   }
 
+  // eslint-disable-next-line
   render() {}
 
-  getContent() {
+  getContent(): HTMLElement | Record<string, unknown> {
     return this.element;
   }
 
-  _makePropsProxy(props: { [key: string]: unknown }) {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
+  _makePropsProxy(props: { [key: string]: unknown }): Record<string, unknown> {
     const self = this;
-
     return new Proxy(props, {
       get(target: { [key: string]: unknown }, prop: string) {
         const value: unknown = target[prop];
@@ -111,7 +109,6 @@ export default class Block {
       },
       set(target: { [key: string]: unknown }, prop: string, value: unknown) {
         target[prop] = value;
-
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
@@ -123,16 +120,8 @@ export default class Block {
     });
   }
 
-  _createDocumentElement(tagName: string) {
+  _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
     return document.createElement(tagName);
-  }
-
-  show() {
-    this.getContent()!.style.display = "block";
-  }
-
-  hide() {
-    this.getContent()!.style.display = "none";
   }
 }

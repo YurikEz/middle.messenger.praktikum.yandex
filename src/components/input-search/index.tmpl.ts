@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <input
     class="input-search"
     type="{{ this.type }}"

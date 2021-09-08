@@ -1,12 +1,12 @@
-export default (time: string) => {
+export default (time: string): string => {
   const date: Date = new Date(time);
   const currentDay: number = date.getDate();
   const currentMonth: number = date.getMonth() + 1;
   const currentYear: number = date.getFullYear() % 100;
 
-  let resultDay: string = '';
-  let resultMonth: string = '';
-  let resultYear: string = '';
+  let resultDay = '';
+  let resultMonth = '';
+  let resultYear = '';
 
   if (currentDay < 10) {
     resultDay = `0${currentDay}`;

@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <button
     type="{{ this.type }}"
     class="button"

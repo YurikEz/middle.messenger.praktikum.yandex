@@ -1,4 +1,4 @@
-export default (tag: string = 'div', id: string | null = null, classes: string[] = []) => {
+export default (tag = 'div', id: string | null = null, classes: string[] = []): HTMLElement => {
   const element = document.createElement(tag);
 
   if (id) {

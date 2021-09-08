@@ -1,5 +1,7 @@
 import Handlebars from 'handlebars/dist/handlebars';
+
 import DefaultComponent from '../../js/utils/default-component';
+
 import template from './index.tmpl';
 
 export default class Button extends DefaultComponent {
@@ -8,7 +10,7 @@ export default class Button extends DefaultComponent {
     this.props = props;
   }
 
-  render() {
+  render(): string {
     return Handlebars.compile(template(), { noEscape: true })(this.props);
   }
 }

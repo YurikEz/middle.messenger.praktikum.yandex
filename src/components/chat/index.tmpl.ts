@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <button type="button" class="chat">
     <div class="chat__avatar">
       {{#if this.avatar }}

@@ -5,7 +5,7 @@ import isArray from './isArray';
  * @param value
  * @returns {*}
  */
-export default (value: unknown[]) => {
+export default (value: unknown[]): unknown => {
   if (isArray(value)) {
     const lastIndex = value.length - 1;
     return value[lastIndex];

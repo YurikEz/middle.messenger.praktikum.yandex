@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <div class="message {{#if this.isMyMessage }}message--my{{/if}}">
     {{#if this.content }}
       <p class="message__text">{{ this.content }}</p>

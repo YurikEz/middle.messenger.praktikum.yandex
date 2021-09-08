@@ -1,11 +1,11 @@
-import state from '../../js/storage/state';
-import Chat from '../../components/chat/';
-import OpenChat from '../../components/open-chat/';
-import Message from '../../components/message/';
-import InputSearch from '../../components/input-search/';
-import Input from '../../components/input/';
 import ButtonLink from '../../components/button-link';
 import ButtonSend from '../../components/button-send';
+import Chat from '../../components/chat/';
+import InputSearch from '../../components/input-search/';
+import Input from '../../components/input/';
+import Message from '../../components/message/';
+import OpenChat from '../../components/open-chat/';
+import state from '../../js/storage/state';
 import createElement from "../../js/utils/createElement";
 import formatDate from "../../js/utils/formatDate";
 

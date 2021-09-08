@@ -30,24 +30,29 @@ interface Options {
   method: string;
 }
 
-class HTTPTransport {
-  get = (url: string, options: Options) => {
+interface PromiseResponse {
+  response: unknown
+  status: number
+}
+
+export default class HTTPTransport {
+  get = (url: string, options: Options): Promise<PromiseResponse> => {
     return this.request(url, {...options, method: METHODS.GET}, options.timeout);
   };
 
-  post = (url: string, options: Options) => {
+  post = (url: string, options: Options): Promise<PromiseResponse> => {
     return this.request(url, {...options, method: METHODS.POST}, options.timeout);
   };
 
-  put = (url: string, options: Options) => {
+  put = (url: string, options: Options): Promise<PromiseResponse> => {
     return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
   };
 
-  delete = (url: string, options: Options) => {
+  delete = (url: string, options: Options): Promise<PromiseResponse> => {
     return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
   };
 
-  request = (url: string, options: Options, timeout?: number) => {
+  request = (url: string, options: Options, timeout?: number): Promise<PromiseResponse> => {
     const {headers, method, data} = options;
 
     return new Promise(function(resolve, reject) {

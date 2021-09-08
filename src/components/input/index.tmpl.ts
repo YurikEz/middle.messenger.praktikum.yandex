@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
   <label class="input-field {{#if this.isNotLabel }}input-field__no-label{{/if}}">
     <span class="input-field__label">{{ this.label }}</span>
     <input

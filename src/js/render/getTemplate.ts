@@ -1,6 +1,6 @@
 import pages from '../../pages';
 
-export default (route: string) => {
+export default (route: string): string => {
   const pagesTyped: {
     [key: string]: string;
   } = pages;

@@ -1,9 +1,9 @@
-import state from '../../js/storage/state';
-import Title from '../../components/title/';
-import Form from '../../components/form';
-import Button from '../../components/button/';
 import ButtonLink from '../../components/button-link';
+import Button from '../../components/button/';
+import Form from '../../components/form';
 import Input from '../../components/input/';
+import Title from '../../components/title/';
+import state from '../../js/storage/state';
 import createElement from "../../js/utils/createElement";
 
 const localState = state.registration;
@@ -16,9 +16,9 @@ const title = new Title({
 const buttons = localState.controls.map(button => {
   if (button.isButton) {
     return new Button(button).render()
-  } else {
+  } 
     return new ButtonLink(button).render()
-  }
+  
 }).join('');
 
 const inputs = localState.data.map(input => new Input(input).render()).join('');

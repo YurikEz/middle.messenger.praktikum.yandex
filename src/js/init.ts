@@ -1,7 +1,7 @@
-import router from './router/';
 import render from './render/';
+import router from './router/';
 
-export default () => {
+export default (): void => {
   document.addEventListener('DOMContentLoaded', () => {
     render(router());
   });
