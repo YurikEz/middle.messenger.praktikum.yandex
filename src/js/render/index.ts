@@ -3,7 +3,6 @@ import validator from "../utils/validator";
 import getTemplate from './getTemplate';
 
 export default (route: string): void => {
-  console.log(route);
   const root = document.getElementById('root') as HTMLDivElement;
 
   root.innerHTML = getTemplate(route);
