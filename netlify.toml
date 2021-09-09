@@ -10,10 +10,10 @@
 
 [[redirects]]
   from = "/registration"
-  to = "/"
+  to = "/registration2"
 
 [redirects]
-  /registration             /
+  /registration             /registration22
   /_404                     /
   /_500                     /
   /messenger                /
