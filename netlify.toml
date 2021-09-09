@@ -11,13 +11,3 @@
 [[redirects]]
   from = "/registration"
   to = "/registration2"
-
-[redirects]
-  /registration             /registration22
-  /_404                     /
-  /_500                     /
-  /messenger                /
-  /login                    /
-  /profile                  /
-  /profileEditData          /
-  /profileEditPassword      /
