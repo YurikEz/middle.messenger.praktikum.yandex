@@ -22,7 +22,7 @@ export default (): string => {
     currentRoute = 'profileEditPassword';
   }
 
-  console.log(currentRoute);
+  console.log('currentRoute', currentRoute);
 
   return currentRoute;
 };
