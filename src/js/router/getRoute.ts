@@ -1,7 +1,6 @@
 import helpers from '../utils/helpers';
 
 export default (): string => {
-  console.log(window.location);
   const pathname: string = window.location.pathname;
   let currentRoute: string;
 
@@ -22,8 +21,6 @@ export default (): string => {
   if (pathname === '/profile/edit/password' && currentRoute === 'password') {
     currentRoute = 'profileEditPassword';
   }
-
-  console.log(currentRoute);
 
   return currentRoute;
 };

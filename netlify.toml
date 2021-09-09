@@ -7,8 +7,6 @@
 
 [build]
   publish = "dist"
-  direction = "dist"
-  command = "npm run build"
 
 [[redirects]]
   from = "/_404"
@@ -36,16 +34,21 @@
   status = 200
 
 [[redirects]]
-  from = "/profileEditData"
+  from = "/data"
   to = "/"
   status = 200
 
 [[redirects]]
-  from = "/profileEditPassword"
+  from = "/password"
   to = "/"
   status = 200
 
 [[redirects]]
   from = "/registration"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/*"
   to = "/"
   status = 200
