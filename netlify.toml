@@ -7,3 +7,13 @@
 
 [build]
   publish = "dist"
+
+[redirects]
+  /registration             /
+  /_404                     /
+  /_500                     /
+  /messenger                /
+  /login                    /
+  /profile                  /
+  /profileEditData          /
+  /profileEditPassword      /

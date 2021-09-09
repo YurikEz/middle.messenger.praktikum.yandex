@@ -106,24 +106,23 @@ export default class Block {
   }
 
   _makePropsProxy(props: { [key: string]: unknown }): Record<string, unknown> {
-    const self = this;
     return new Proxy(props, {
       get(target: { [key: string]: unknown }, prop: string) {
         const value: unknown = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target: { [key: string]: unknown }, prop: string, value: unknown) {
+      set: (target: { [key: string]: unknown }, prop: string, value: unknown) => {
         target[prop] = value;
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },
       deleteProperty() {
         throw new Error("Нет доступа");
       }
     });
-  }
+  };
 
   _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
