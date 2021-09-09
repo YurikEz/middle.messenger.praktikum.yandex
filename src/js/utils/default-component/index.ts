@@ -1,4 +1,5 @@
 import Handlebars from "handlebars/dist/handlebars";
+
 import EventBus from "./eventBus";
 
 export default class Block {
@@ -122,7 +123,7 @@ export default class Block {
         throw new Error("Нет доступа");
       }
     });
-  };
+  }
 
   _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создает сразу несколько блоков
