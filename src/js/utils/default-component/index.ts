@@ -1,3 +1,4 @@
+import Handlebars from "handlebars/dist/handlebars";
 import EventBus from "./eventBus";
 
 export default class Block {
@@ -95,6 +96,10 @@ export default class Block {
 
   // eslint-disable-next-line
   render() {}
+
+  _compile(template: string, props: { [key: string]: unknown }): string {
+    return Handlebars.compile(template, { noEscape: true })(props);
+  }
 
   getContent(): HTMLElement | Record<string, unknown> {
     return this.element;

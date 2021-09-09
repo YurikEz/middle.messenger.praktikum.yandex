@@ -1,5 +1,3 @@
-import Handlebars from 'handlebars/dist/handlebars';
-
 import DefaultComponent from '../../js/utils/default-component';
 
 import template from './index.tmpl';
@@ -11,6 +9,6 @@ export default class Avatar extends DefaultComponent {
   }
 
   render(): string {
-    return Handlebars.compile(template(), { noEscape: true })(this.props);
+    return this._compile(template(), this.props);
   }
 }
