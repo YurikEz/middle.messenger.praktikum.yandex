@@ -7,8 +7,6 @@
 
 [build]
   publish = "dist"
-  direction = "dist"
-  command = "npm run build"
 
 [[redirects]]
   from = "/_404"
