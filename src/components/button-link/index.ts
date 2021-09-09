@@ -2,7 +2,7 @@ import Handlebars from 'handlebars/dist/handlebars';
 
 import DefaultComponent from '../../js/utils/default-component';
 
-import template from './index.tmpls';
+import template from './index.tmpl';
 
 export default class ButtonLink extends DefaultComponent {
   constructor(props: { [key: string]: unknown }) {
