@@ -1,3 +1,5 @@
+import Handlebars from "handlebars/dist/handlebars";
+
 import EventBus from "./eventBus";
 
 export default class Block {
@@ -96,22 +98,25 @@ export default class Block {
   // eslint-disable-next-line
   render() {}
 
+  _compile(template: string, props: { [key: string]: unknown }): string {
+    return Handlebars.compile(template, { noEscape: true })(props);
+  }
+
   getContent(): HTMLElement | Record<string, unknown> {
     return this.element;
   }
 
   _makePropsProxy(props: { [key: string]: unknown }): Record<string, unknown> {
-    const self = this;
     return new Proxy(props, {
       get(target: { [key: string]: unknown }, prop: string) {
         const value: unknown = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target: { [key: string]: unknown }, prop: string, value: unknown) {
+      set: (target: { [key: string]: unknown }, prop: string, value: unknown) => {
         target[prop] = value;
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },
       deleteProperty() {
