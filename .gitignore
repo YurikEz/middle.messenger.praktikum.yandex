@@ -2,3 +2,6 @@
 /node_modules
 /.parcel-cache/
 /.cache/
+/yarn-error.log
+/src/*.js
+/static/*.js
