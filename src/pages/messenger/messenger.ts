@@ -37,24 +37,21 @@ export class MessengerPage extends Block {
                       InputSearch
                   }}}
               </div>
-              <div class="chats__wrapper"></div>
+              <div class="chats__wrapper">
+                  {{{
+                      Chat
+                          avatar="/path/to/avatar.jpg"
+                          title="Новый чат"
+                          last_message="Это сообщение было последним"
+                          time="2020-01-02T14:22:22.000Z"
+                          unread_count=9
+                  }}}
+              </div>
           </div>
-          //openChat
+          {{{
+              ChatOpened
+          }}}
       </section>
     `;
   }
 }
-
-
-// <div class="chats">
-// <div class="chats__header">
-//   ${link}
-//   </div>
-//   <div class="chats__search">
-//   ${inputSearch}
-//   </div>
-//   <div class="chats__wrapper">
-//   ${chats}
-//   </div>
-//   </div>
-// ${openChat}

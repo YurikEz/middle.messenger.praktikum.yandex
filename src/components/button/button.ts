@@ -1,5 +1,5 @@
-import Block from '../../utils/Block';
 import './index.scss';
+import Block from '../../utils/Block';
 
 interface ButtonProps {
   name: string,
