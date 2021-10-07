@@ -9,6 +9,7 @@ export enum Method {
 type Options = {
   method: Method;
   data?: any;
+  isFile?: boolean,
 };
 
 export default class HTTPTransport {
@@ -30,10 +31,11 @@ export default class HTTPTransport {
     });
   }
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+  public put<Response = void>(path: string, data: unknown, isFile: boolean): Promise<Response> {
     return this.request<Response>(this.endpoint + path, {
       method: Method.Put,
       data,
+      isFile,
     });
   }
 
@@ -50,12 +52,11 @@ export default class HTTPTransport {
     });
   }
 
-  private request<Response>(url: string, options: Options = {method: Method.Get}): Promise<Response> {
-    const { method, data } = options;
+  private request<Response>(url: string, options: Options = { method: Method.Get, isFile: false }): Promise<Response> {
+    const { method, data, isFile } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-
 
       xhr.open(method, url);
 
@@ -72,13 +73,19 @@ export default class HTTPTransport {
       xhr.onerror = () => reject({reason: 'network error'});
       xhr.ontimeout = () => reject({reason: 'timeout'});
 
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      if (isFile) {
+        xhr.setRequestHeader('accept', 'application/json');
+      } else {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
 
       xhr.withCredentials = true;
       xhr.responseType = 'json';
 
       if (method === Method.Get || !data) {
         xhr.send();
+      } else if (isFile) {
+        xhr.send(data);
       } else {
         xhr.send(JSON.stringify(data));
       }

@@ -15,13 +15,6 @@ export class ProfilePage extends Block {
   componentDidMount() {
     if (!this.props.user.profile) {
       this.props.router.go('/');
-    } else {
-      for (const [key, field] of Object.entries(this.refs)) {
-        const children = Array.from(field.children) as HTMLInputElement[];
-        const input: HTMLInputElement | undefined = children.find(({ localName }) => localName === 'input');
-
-        input!.value = this.props.user.profile[key];
-      }
     }
   }
 
@@ -47,6 +40,8 @@ export class ProfilePage extends Block {
               <div class="profile__left">
                 {{{
                     Avatar
+                          url=this.user.profile.avatar
+                          disabled=true
                 }}}
                 <div class="profile__controls">
                   {{{
@@ -77,6 +72,7 @@ export class ProfilePage extends Block {
                                   name="email"
                                   label="Почта"
                                   disabled=true
+                                  value=this.user.profile.email
                           }}}
                           {{{
                               Input
@@ -84,6 +80,7 @@ export class ProfilePage extends Block {
                                   name="login"
                                   label="Логин"
                                   disabled=true
+                                  value=this.user.profile.login
                           }}}
                           {{{
                               Input
@@ -91,6 +88,7 @@ export class ProfilePage extends Block {
                                   name="first_name"
                                   label="Имя"
                                   disabled=true
+                                  value=this.user.profile.first_name
                           }}}
                           {{{
                               Input
@@ -98,6 +96,7 @@ export class ProfilePage extends Block {
                                   name="second_name"
                                   label="Фамилия"
                                   disabled=true
+                                  value=this.user.profile.second_name
                           }}}
                           {{{
                               Input
@@ -105,6 +104,7 @@ export class ProfilePage extends Block {
                                   name="display_name"
                                   label="Имя в чате"
                                   disabled=true
+                                  value=this.user.profile.display_name
                           }}}
                           {{{
                               Input
@@ -112,6 +112,7 @@ export class ProfilePage extends Block {
                                   name="phone"
                                   label="Телефон"
                                   disabled=true
+                                  value=this.user.profile.phone
                           }}}
                       </section>
                   </form>

@@ -9,6 +9,7 @@ const handleShowError = (field: HTMLInputElement, input: HTMLInputElement | unde
     switch (name) {
       case 'first_name':
       case 'second_name':
+      case 'display_name':
         errorElement.textContent = 'Ошибка: значение должно удовлетворять требованиям - латиница или кириллица,' +
           ' первая буква должна быть' +
           ' заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис)';
@@ -78,6 +79,7 @@ const checkValidation = (input: HTMLInputElement | undefined) => {
   switch (name) {
     case 'first_name':
     case 'second_name':
+    case 'display_name':
       const firstCharUpper = regExp.name.firstCharUpper.test(value);
       isValid = regExp.name.str.test(value);
 
@@ -92,6 +94,7 @@ const checkValidation = (input: HTMLInputElement | undefined) => {
       return regExp.email.str.test(value);
     case 'password':
     case 'newPassword':
+    case 'oldPassword':
       const lengthPassword = regExp.password.length.test(value);
       isValid = regExp.password.str.test(value);
 
@@ -113,13 +116,13 @@ const checkValidation = (input: HTMLInputElement | undefined) => {
   }
 };
 
-export const onCheckFormFields = (fields: NodeListOf<HTMLInputElement> | [], button: HTMLButtonElement | null) => {
+export const onCheckFormFields = (button: HTMLButtonElement | null, fields: NodeListOf<Element>) => {
   const validInputs: {
     [key: string]: string;
   } = {};
 
   if (fields.length) {
-    Array.from(fields).forEach(field => {
+    Array.from(fields).forEach((field: HTMLInputElement) => {
       const children = Array.from(field.children) as HTMLInputElement[];
       const input: HTMLInputElement | undefined = children.find(({ localName }) => localName === 'input');
       const name = input?.name || '';
@@ -142,13 +145,13 @@ export const onCheckFormFields = (fields: NodeListOf<HTMLInputElement> | [], but
     return [];
   }
 };
-export default (button: HTMLButtonElement | null, fields: NodeListOf<HTMLInputElement> | []): void => {
+export default (button: HTMLButtonElement | null, fields: NodeListOf<Element>): void => {
   if (fields.length) {
     Array.from(fields).forEach(field => {
       const children = Array.from(field.children) as HTMLInputElement[];
       const input: HTMLInputElement | undefined = children.find(({ localName }) => localName === 'input');
-      input?.addEventListener('focus', () => onCheckFormFields(fields, button));
-      input?.addEventListener('blur', () => onCheckFormFields(fields, button));
+      input?.addEventListener('focus', () => onCheckFormFields(button, fields));
+      input?.addEventListener('blur', () => onCheckFormFields(button, fields));
     });
   }
 };

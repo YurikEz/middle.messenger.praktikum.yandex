@@ -1,10 +1,11 @@
 import Block from '../../utils/Block';
-import Validator from "../../utils/Validator";
-import { onCheckFormFields } from "../../utils/Validator";
-import AuthController from '../../controllers/AuthController';
-import { SignUpData } from "../../api/AuthAPI";
+import Validator from '../../utils/Validator';
+import { onCheckFormFields } from '../../utils/Validator';
 
-let fields: NodeListOf<HTMLInputElement> | [] = [];
+import AuthController from '../../controllers/AuthController';
+import { SignUpData } from '../../api/AuthAPI';
+
+let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class SignUpPage extends Block {
@@ -15,20 +16,19 @@ export class SignUpPage extends Block {
       },
       onSignUp: async (e: Event) => {
         e.preventDefault();
-
-        const validFields = onCheckFormFields(fields, button) as unknown as SignUpData;
+        const validFields = onCheckFormFields(button, fields) as unknown as SignUpData;
 
         if (Object.keys(validFields).length) {
           await AuthController.signup(validFields);
         } else {
-          throw Error('Заполните форму согласно описаниям полей');
+          alert('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     };
   }
 
   componentDidMount() {
-    if (!fields.length) {
+    if (!fields?.length) {
       fields = document.querySelectorAll('.input-field');
       button = document.querySelector('.button');
       Validator(button, fields);

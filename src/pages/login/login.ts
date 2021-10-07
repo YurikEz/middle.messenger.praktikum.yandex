@@ -1,11 +1,11 @@
 import Block from '../../utils/Block';
-import Validator from "../../utils/Validator";
-import { onCheckFormFields } from "../../utils/Validator";
+import Validator from '../../utils/Validator';
+import { onCheckFormFields } from '../../utils/Validator';
 
 import AuthController from '../../controllers/AuthController';
 import { LoginData } from '../../api/AuthAPI';
 
-let fields: NodeListOf<HTMLInputElement> | [] = [];
+let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class LoginPage extends Block {
@@ -16,34 +16,32 @@ export class LoginPage extends Block {
       },
       onLogin: async (e: Event) => {
         e.preventDefault();
-        const validFields = onCheckFormFields(fields, button) as unknown as LoginData;
+        const validFields = onCheckFormFields(button, fields) as unknown as LoginData;
 
         if (Object.keys(validFields).length) {
           await AuthController.login(validFields);
         } else {
-          throw Error('Заполните форму согласно описаниям полей');
+          alert('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     }
   }
 
   componentDidMount() {
-    if (!fields.length) {
+    if (this.props.user.profile) {
+      this.props.router.go('/messenger')
+    }
+
+    if (!fields?.length) {
       fields = document.querySelectorAll('.input-field');
       button = document.querySelector('.button');
       Validator(button, fields);
-    }
-
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger')
     }
   }
 
   componentDidUpdate() {
     if (this.props.user.profile) {
       this.props.router.go('/messenger');
-    } else {
-      this.props.router.go('/login')
     }
 
     return true;
@@ -65,7 +63,6 @@ export class LoginPage extends Block {
                             name="login"
                             label="Логин"
                             placeholder="Введите логин"
-                            autocomplete="on"
                             onChange=handleChangeInput
                     }}}
                     {{{
@@ -75,7 +72,6 @@ export class LoginPage extends Block {
                             type="password"
                             label="Пароль"
                             placeholder="Введите пароль"
-                            autocomplete="on"
                             onChange=handleChangeInput
                     }}}
                 </section>

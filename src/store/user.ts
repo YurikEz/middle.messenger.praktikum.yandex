@@ -1,9 +1,9 @@
 import { Action } from '../utils/store';
-import { UserData } from '../api/AuthAPI';
+import { UserData } from '../api/UserAPI';
 
 const SET_USER = 'user/SET';
+const SET_RESULT_SEARCH_USERS = 'user/SET_RESULT_SEARCH_USERS';
 const DELETE_USER = 'user/DELETE';
-const SET_ERROR = 'user/SET_ERROR';
 
 export const setUser = (user: UserData) => ({
   type: SET_USER,
@@ -14,19 +14,21 @@ export const deleteUser = () => ({
   type: DELETE_USER,
 });
 
-export const setError = (error: { reason: string }) => ({
-  type: SET_ERROR,
-  payload: error,
+export const setResultSearchUsers = (users: UserData[]) => ({
+  type: SET_RESULT_SEARCH_USERS,
+  payload: users,
 });
 
-export default (state = { profile: null, error: null }, action: Action) => {
+
+
+export default (state = { profile: null, search: null }, action: Action) => {
   switch (action.type) {
     case SET_USER:
-      return { error: null, profile: action.payload };
+      return { profile: action.payload, search: null };
+    case SET_RESULT_SEARCH_USERS:
+      return { profile: state.profile, search: action.payload };
     case DELETE_USER:
-      return { profile: null, error: null };
-    case SET_ERROR:
-      return { error: action.payload, profile: null };
+      return { profile: null, search: null };
     default:
       return state;
   }

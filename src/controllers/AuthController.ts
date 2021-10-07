@@ -1,6 +1,7 @@
-import { AuthAPI, LoginData, SignUpData, UserData } from '../api/AuthAPI';
+import { AuthAPI, LoginData, SignUpData } from '../api/AuthAPI';
+import { UserData } from '../api/UserAPI';
 import { store } from '../store';
-import { deleteUser, setError, setUser } from '../store/user';
+import { deleteUser, setUser } from '../store/user';
 
 class AuthController {
   private api: AuthAPI;
@@ -15,7 +16,6 @@ class AuthController {
       await this.fetchUser();
     } catch (e) {
       alert(`Error: ${e.reason}`);
-      store.dispatch(setError(e as { reason: string }));
     }
   }
 
@@ -25,7 +25,6 @@ class AuthController {
       await this.fetchUser();
     } catch (e) {
       alert(`Error: ${e.reason}`);
-      store.dispatch(setError(e as { reason: string }));
     }
   }
 
@@ -36,7 +35,6 @@ class AuthController {
       store.dispatch(deleteUser());
     } catch (e) {
       alert(`Error: ${e.reason}`);
-      store.dispatch(setError(e as { reason: string }));
     }
   }
 

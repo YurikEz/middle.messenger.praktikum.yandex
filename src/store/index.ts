@@ -1,9 +1,12 @@
-import user from './user';
-import { Store } from '../utils/store';
 import Block from '../utils/Block';
+import { Store } from '../utils/store';
+
+import user from './user';
+import chats from './chats';
 
 export const store = new Store({
   user,
+  chats,
 });
 
 
