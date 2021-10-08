@@ -3,6 +3,7 @@ import { UserData } from '../api/UserAPI';
 
 const SET_USER = 'user/SET';
 const SET_RESULT_SEARCH_USERS = 'user/SET_RESULT_SEARCH_USERS';
+const CLEAR_RESULT_SEARCH_USERS = 'user/CLEAR_RESULT_SEARCH_USERS';
 const DELETE_USER = 'user/DELETE';
 
 export const setUser = (user: UserData) => ({
@@ -19,6 +20,11 @@ export const setResultSearchUsers = (users: UserData[]) => ({
   payload: users,
 });
 
+export const clearResultSearchUsers = () => ({
+  type: CLEAR_RESULT_SEARCH_USERS,
+  payload: null,
+});
+
 
 
 export default (state = { profile: null, search: null }, action: Action) => {
@@ -26,6 +32,8 @@ export default (state = { profile: null, search: null }, action: Action) => {
     case SET_USER:
       return { profile: action.payload, search: null };
     case SET_RESULT_SEARCH_USERS:
+      return { profile: state.profile, search: action.payload };
+    case CLEAR_RESULT_SEARCH_USERS:
       return { profile: state.profile, search: action.payload };
     case DELETE_USER:
       return { profile: null, search: null };

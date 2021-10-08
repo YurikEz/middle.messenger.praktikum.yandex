@@ -1,59 +1,50 @@
 import './index.scss';
 import Block from '../../utils/Block';
+import { ChatData } from '../../api/ChatsAPI';
 
 interface ChatProps {
-  avatar?: string,
-  title: string,
-  isMyLastMessage?: boolean,
-  last_message?: string,
-  time?: string,
-  unread_count?: number,
+  item: ChatData,
+  onClick?: () => void,
 }
 
 export class Chat extends Block {
   constructor({
-                avatar = '',
-                title,
-                isMyLastMessage= false,
-                last_message= '',
-                time= '',
-                unread_count= 0,
+                item,
+                onClick = () => {},
               }: ChatProps) {
     super({
-      avatar,
-      title,
-      isMyLastMessage,
-      last_message,
-      time,
-      unread_count,
+      item,
+      events: {
+        click: onClick,
+      },
     });
   }
 
   render(): string {
     // language=hbs
     return `
-        <button type="button" class="chat">
+        <button type="button" class="chat" data-chat-id="{{ item.id }}">
             <div class="chat__avatar">
-                {{#if avatar }}
-                    <img src="{{ avatar }}" alt="avatar">
+                {{#if item.avatar }}
+                    <img src="{{ item.avatar }}" alt="avatar">
                 {{else}}
                     <div class="chat__avatar-default"></div>
                 {{/if}}
             </div>
             <div class="chat__info">
-                <h3 class="chat__title">{{ title }}</h3>
+                <h3 class="chat__title">{{ item.title }}</h3>
                 <p class="chat__text">
                     {{#if isMyLastMessage }}
                         Вы:
                     {{/if}}
-                    {{ last_message }}
+                    {{ item.last_message }}
                 </p>
             </div>
             <div class="chat__info">
-                <span class="chat__date">{{ time }}</span>
-                {{#if unread_count }}
+                <span class="chat__date">{{ item.last_message.time }}</span>
+                {{#if item.unread_count }}
                     <div class="chat__notification-wrapper">
-                        <span class="chat__notification">{{ unread_count }}</span>
+                        <span class="chat__notification">{{ item.unread_count }}</span>
                     </div>
                 {{/if}}
             </div>

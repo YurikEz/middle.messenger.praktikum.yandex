@@ -1,6 +1,6 @@
 import { UserAPI, SearchUsersProps, UserData, UserUpdatePasswordProps, UserUpdateProfileProps } from '../api/UserAPI';
 import { store } from "../store";
-import { setUser, setResultSearchUsers } from "../store/user";
+import { setUser, setResultSearchUsers, clearResultSearchUsers } from "../store/user";
 
 class UserController {
   private api: UserAPI;
@@ -42,9 +42,14 @@ class UserController {
       const users: UserData[] = await this.api.searchUsers(data);
 
       store.dispatch(setResultSearchUsers(users));
+      return users;
     } catch (e) {
       alert(`Error: ${e.reason}`);
     }
+  }
+
+  async clearSearchUsers() {
+    store.dispatch(clearResultSearchUsers());
   }
 }
 

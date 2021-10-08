@@ -32,13 +32,14 @@ export class Button extends Block {
     // language=hbs
     return `
         <button
+          name="{{ name }}"
           type="{{ type }}"
           class="button"
           {{#if form }}
             form="{{ form }}"
           {{/if}}
         >
-            {{ this.label }}
+            {{ label }}
         </button>
     `;
   }

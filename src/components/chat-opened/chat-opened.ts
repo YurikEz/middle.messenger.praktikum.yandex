@@ -1,29 +1,33 @@
 import './index.scss';
 import Block from '../../utils/Block';
+import { ChatData } from '../../api/ChatsAPI';
 
 interface ChatOpenedProps {
-  selectedChat?: {
-    [key: string]: unknown,
-  },
-  avatar?: string,
+  item: ChatData,
+  activePanelButtons: boolean,
+  onClick?: () => void,
 }
 
 export class ChatOpened extends Block {
   constructor({
-                selectedChat = undefined,
-                avatar = '',
+                item,
+                activePanelButtons = false,
+                onClick= () => {},
               }: ChatOpenedProps) {
     super({
-      selectedChat,
-      avatar,
+      item,
+      activePanelButtons,
+      events: {
+        click: onClick,
+      },
     });
   }
 
   render(): string {
     // language=hbs
     return `
-        <div class="open-chat {{#if selectedChat }}open-chat--active{{/if}}">
-            {{#if selectedChat }}
+        <div class="open-chat {{#if item }}open-chat--active{{/if}}">
+            {{#if item }}
                 <div class="open-chat__header">
                     <div class="open-chat__header-info">
                         <div class="open-chat__header-avatar">
@@ -33,11 +37,15 @@ export class ChatOpened extends Block {
                                 <div class="open-chat__header-avatar-default"></div>
                             {{/if}}
                         </div>
-                        <div class="open-chat__header-title">{{ selectedChat.title }}</div>
+                        <div class="open-chat__header-title">{{ item.title }}</div>
                     </div>
-                    <button class="open-chat__header-settings">
+                    <button name="openPanelButtons" class="open-chat__header-settings">
                         <img src="/image/icons/dots.svg" alt="dots">
                     </button>
+                    <div class="open-chat__header-button-wrapper {{#if activePanelButtons }}open-chat__header-button-wrapper--active{{/if}}">
+                        <button name="openModalAddUser" type="button" class="open-chat__header-button">Добавить пользователя</button>
+                        <button name="openModalDeleteUser" type="button" class="open-chat__header-button">Удалить пользователя</button>
+                    </div>
                 </div>
                 <div class="open-chat__messages">
                     messages

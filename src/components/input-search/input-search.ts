@@ -26,10 +26,10 @@ export class InputSearch extends Block {
           class="input-search"
           type="text"
           name="search"
-          placeholder="🔎 Поиск"
+          placeholder="🔎 Поиск пользователя для создания чата"
           autocomplete="off"
           {{#if value }}
-              value="{{ value }}"
+            value="{{ value }}"
           {{/if}}
         >
     `

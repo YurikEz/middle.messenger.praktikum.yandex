@@ -78,10 +78,10 @@ export class LoginPage extends Block {
                 <section class="form__controls">
                     {{{
                         Button
-                            name="login"
-                            label="Войти"
-                            form="login"
-                            onClick=onLogin
+                              name="login"
+                              label="Войти"
+                              form="login"
+                              onClick=onLogin
                     }}}
                     {{{
                         Link
