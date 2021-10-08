@@ -1,5 +1,5 @@
-import { Action } from '../utils/store';
 import { ModalProps } from '../controllers/ModalController';
+import { Action } from '../utils/store';
 
 const MODAL_OPEN = 'modal/MODAL_OPEN';
 const MODAL_CLOSE = 'modal/MODAL_CLOSE';

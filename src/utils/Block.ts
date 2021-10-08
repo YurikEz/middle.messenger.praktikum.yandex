@@ -1,7 +1,8 @@
+import Handlebars from 'handlebars/dist/handlebars';
+import { nanoid } from 'nanoid';
+
 import EventBus from './EventBus';
 import { Nullable, Values } from './types';
-import { nanoid } from 'nanoid';
-import Handlebars from 'handlebars/dist/handlebars';
 
 type Events = Values<typeof Block.EVENTS>;
 
@@ -121,13 +122,13 @@ export default class Block<P = any> {
 
   render(): string {
     return '';
-  };
+  }
 
   getContent(): HTMLElement {
     // Хак, чтобы вызвать CDM только после добавления в DOM
     if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
       setTimeout(() => {
-        if (this.element?.parentNode?.nodeType !==  Node.DOCUMENT_FRAGMENT_NODE ) {
+        if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE ) {
           this.eventBus().emit(Block.EVENTS.FLOW_CDM);
         }
       }, 100)

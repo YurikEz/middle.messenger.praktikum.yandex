@@ -1,6 +1,6 @@
 import './index.scss';
-import Block from '../../utils/Block';
 import AuthController from '../../controllers/AuthController';
+import Block from '../../utils/Block';
 
 export class ProfilePage extends Block {
   getStateFromProps() {

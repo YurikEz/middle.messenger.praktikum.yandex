@@ -1,9 +1,9 @@
 import Block from '../utils/Block';
 import { Store } from '../utils/store';
 
-import user from './user';
 import chats from './chats';
 import modal from './modal';
+import user from './user';
 
 export const store = new Store({
   user,

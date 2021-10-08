@@ -10,8 +10,8 @@
     "start": "parcel build static/index.html && node server",
     "dev": "parcel static/index.html --no-source-maps",
     "server": "node server",
-    "eslint": "eslint static/js && eslint src-old",
-    "stylelint": "stylelint static/css && stylelint src-old",
+    "eslint": "eslint src",
+    "stylelint": "stylelint static/css && stylelint src",
     "checktypes": "tsc"
   },
   "engines": {

@@ -1,6 +1,6 @@
 import './index.scss';
-import Block from '../../utils/Block';
 import { ModalProps } from '../../controllers/ModalController';
+import Block from '../../utils/Block';
 
 export class Modal extends Block {
   constructor({

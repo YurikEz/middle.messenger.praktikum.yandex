@@ -1,5 +1,6 @@
-import { withRouter } from '../../utils/Router';
 import { connect } from '../../store';
+import { withRouter } from '../../utils/Router';
+
 import { MessengerPage } from './messenger';
 
 export { MessengerPage } from './messenger';

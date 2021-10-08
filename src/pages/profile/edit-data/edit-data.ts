@@ -1,9 +1,8 @@
-import Block from '../../../utils/Block';
-import Validator from '../../../utils/Validator';
-import { onCheckFormFields } from '../../../utils/Validator';
-
-import UserController from '../../../controllers/UserController';
 import { UserUpdateProfileProps } from '../../../api/UserAPI';
+import UserController from '../../../controllers/UserController';
+import Block from '../../../utils/Block';
+import Validator, { onCheckFormFields } from '../../../utils/Validator';
+
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
@@ -14,7 +13,7 @@ export class EditDataPage extends Block {
       handleChangeAvatar: async (e: Event) => {
         e.preventDefault();
         const avatar = e.target?.files[0];
-        let formData = new FormData();
+        const formData = new FormData();
         formData.append('avatar', avatar);
         await UserController.updateAvatar(formData);
       },

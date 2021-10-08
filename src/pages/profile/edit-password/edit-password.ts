@@ -1,10 +1,9 @@
-import Block from '../../../utils/Block';
-import Validator from '../../../utils/Validator';
-import { onCheckFormFields } from '../../../utils/Validator';
-
-import UserController from '../../../controllers/UserController';
-import AuthController from '../../../controllers/AuthController';
 import { UserUpdatePasswordProps } from '../../../api/UserAPI';
+import AuthController from '../../../controllers/AuthController';
+import UserController from '../../../controllers/UserController';
+import Block from '../../../utils/Block';
+import Validator, { onCheckFormFields } from '../../../utils/Validator';
+
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;

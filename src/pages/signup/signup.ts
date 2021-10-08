@@ -1,9 +1,8 @@
-import Block from '../../utils/Block';
-import Validator from '../../utils/Validator';
-import { onCheckFormFields } from '../../utils/Validator';
-
-import AuthController from '../../controllers/AuthController';
 import { SignUpData } from '../../api/AuthAPI';
+import AuthController from '../../controllers/AuthController';
+import Block from '../../utils/Block';
+import Validator, { onCheckFormFields } from '../../utils/Validator';
+
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;

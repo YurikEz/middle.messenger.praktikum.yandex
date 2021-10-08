@@ -1,5 +1,6 @@
-import { withRouter } from '../../../utils/Router';
 import { connect } from '../../../store';
+import { withRouter } from '../../../utils/Router';
+
 import { EditPasswordPage } from './edit-password';
 
 export { EditPasswordPage } from './edit-password';

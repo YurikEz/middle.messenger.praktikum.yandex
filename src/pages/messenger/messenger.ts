@@ -1,13 +1,13 @@
 import './index.scss';
+import { ChatData } from '../../api/ChatsAPI';
+import ChatsController from '../../controllers/ChatsController';
+import ModalController from '../../controllers/ModalController';
+import UserController from '../../controllers/UserController';
 import Block from '../../utils/Block';
 
-import ChatsController from '../../controllers/ChatsController';
-import UserController from '../../controllers/UserController';
-import ModalController from '../../controllers/ModalController';
-import { ChatData } from '../../api/ChatsAPI';
 
 let timer: number;
-let inputValueOnModal: string = '';
+let inputValueOnModal = '';
 
 export class MessengerPage extends Block {
   getStateFromProps() {
@@ -127,7 +127,7 @@ export class MessengerPage extends Block {
         }
       },
       handleSelectUser: async (e: Event) => {
-        const userId: number = Number(e?.target?.dataset?.userId);
+        const userId = Number(e?.target?.dataset?.userId);
         const userLogin: string = e?.target?.dataset?.userLogin;
 
         await ChatsController.createChat({
@@ -150,7 +150,7 @@ export class MessengerPage extends Block {
           })
       },
       handleSelectChat: (e: Event) => {
-        const chatId: number = Number(e?.target?.dataset?.chatId);
+        const chatId = Number(e?.target?.dataset?.chatId);
         const foundChat: ChatData = this.props.chats.allChats.find(({ id }: { id: number}) => id === chatId);
 
         ChatsController.setSelectedChat(foundChat);

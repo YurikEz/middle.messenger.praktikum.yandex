@@ -1,6 +1,6 @@
 import './index.scss';
-import Block from '../../utils/Block';
 import { ChatData } from '../../api/ChatsAPI';
+import Block from '../../utils/Block';
 
 interface ChatOpenedProps {
   item: ChatData,

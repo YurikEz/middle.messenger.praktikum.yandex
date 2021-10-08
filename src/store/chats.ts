@@ -1,5 +1,5 @@
-import { Action } from '../utils/store';
 import { ChatData } from '../api/ChatsAPI';
+import { Action } from '../utils/store';
 
 const SET_CHATS = 'chats/SET';
 const SET_SELECTED_CHAT = 'chats/SET_SELECTED_CHAT';

@@ -1,5 +1,5 @@
-import { Action } from '../utils/store';
 import { UserData } from '../api/UserAPI';
+import { Action } from '../utils/store';
 
 const SET_USER = 'user/SET';
 const SET_RESULT_SEARCH_USERS = 'user/SET_RESULT_SEARCH_USERS';

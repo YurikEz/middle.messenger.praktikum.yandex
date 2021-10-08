@@ -1,19 +1,18 @@
 require("babel-polyfill");
 
-import Block from './utils/Block';
-import Router from './utils/Router';
-import registerComponent from './utils/RegisterComponent';
 import AuthController from './controllers/AuthController';
-
+import _404 from './pages/404';
+import _500 from './pages/500';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
-import SignUpPage from './pages/signup';
 import MessengerPage from './pages/messenger';
 import ProfilePage from './pages/profile';
 import EditDataPage from './pages/profile/edit-data';
 import EditPasswordPage from './pages/profile/edit-password';
-import _404 from './pages/404';
-import _500 from './pages/500';
+import SignUpPage from './pages/signup';
+import Block from './utils/Block';
+import registerComponent from './utils/RegisterComponent';
+import Router from './utils/Router';
 
 const components = require('./components/**/index.ts') as {[key: string]: { default: typeof Block }};
 

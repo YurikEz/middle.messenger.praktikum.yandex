@@ -1,6 +1,6 @@
 import './index.scss';
-import Block from '../../utils/Block';
 import { UserData } from '../../api/UserAPI';
+import Block from '../../utils/Block';
 
 interface ButtonUserProps {
   item: UserData,
