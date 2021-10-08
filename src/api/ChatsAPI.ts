@@ -11,6 +11,7 @@ export interface ChatData {
     time: string,
     content: string,
   },
+  messages?: ChatMessage[],
 }
 
 export interface createChatProps {
@@ -20,6 +21,42 @@ export interface createChatProps {
 export interface addUsersInChatProps {
   users: number[],
   chatId: number,
+}
+
+export interface ChatTokenData {
+  chatId: number;
+}
+
+export interface ChatTokenResponse {
+  token: string;
+}
+
+export interface ChatMessage {
+  chat_id: number;
+  time: string;
+  type: string;
+  user_id: string;
+  content: string;
+  file?: ChatFile;
+}
+
+export interface ChatFile {
+  id: number;
+  user_id: number;
+  path: string;
+  filename: string;
+  content_type: string;
+  content_size: number;
+  upload_date: string;
+}
+
+export interface ChatMessage {
+  chat_id: number;
+  time: string;
+  type: string;
+  user_id: string;
+  content: string;
+  file?: ChatFile;
 }
 
 export class ChatsAPI extends BaseAPI {
@@ -37,6 +74,10 @@ export class ChatsAPI extends BaseAPI {
 
   deleteUsersInChat(data: addUsersInChatProps): Promise<void> {
     return this.http.delete('/users', data);
+  }
+
+  getToken({ chatId }: ChatTokenData): Promise<ChatTokenResponse> {
+    return this.http.post(`/token/${chatId}`);
   }
 
   read(): Promise<[ChatData]> {

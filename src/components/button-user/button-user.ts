@@ -20,6 +20,10 @@ export class ButtonUser extends Block {
     });
   }
 
+  static getName() {
+    return 'ButtonUser';
+  }
+
   render(): string {
     // language=hbs
     return `

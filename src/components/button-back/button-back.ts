@@ -10,6 +10,10 @@ export class ButtonBack extends Block {
     super({ href });
   }
 
+  static getName() {
+    return 'ButtonBack';
+  }
+
   render(): string {
     // language=hbs
     return `

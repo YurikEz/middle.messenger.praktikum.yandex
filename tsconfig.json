@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "node",
-    "moduleResolution": "node",
+    "target": "ES2018",
+    "module": "commonjs",
     "declaration": true,
     "strictNullChecks": true,
     "sourceMap": true,

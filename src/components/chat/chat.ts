@@ -20,6 +20,10 @@ export class Chat extends Block {
     });
   }
 
+  static getName() {
+    return 'Chat';
+  }
+
   render(): string {
     // language=hbs
     return `
@@ -34,10 +38,7 @@ export class Chat extends Block {
             <div class="chat__info">
                 <h3 class="chat__title">{{ item.title }}</h3>
                 <p class="chat__text">
-                    {{#if isMyLastMessage }}
-                        Вы:
-                    {{/if}}
-                    {{ item.last_message }}
+                    {{ item.last_message.content }}
                 </p>
             </div>
             <div class="chat__info">

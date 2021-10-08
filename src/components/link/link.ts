@@ -25,6 +25,10 @@ export class Link extends Block {
     });
   }
 
+  static getName() {
+    return 'Link';
+  }
+
   render(): string {
     // language=hbs
     return `

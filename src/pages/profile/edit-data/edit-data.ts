@@ -12,7 +12,8 @@ export class EditDataPage extends Block {
     this.state = {
       handleChangeAvatar: async (e: Event) => {
         e.preventDefault();
-        const avatar = e.target?.files[0];
+        // @ts-ignore
+        const avatar = (e.target as HTMLInputElement)?.files[0];
         const formData = new FormData();
         formData.append('avatar', avatar);
         await UserController.updateAvatar(formData);

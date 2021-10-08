@@ -1,16 +1,25 @@
 import './index.scss';
-import { ChatData } from '../../api/ChatsAPI';
+import { ChatData, ChatMessage } from '../../api/ChatsAPI';
 import ChatsController from '../../controllers/ChatsController';
 import ModalController from '../../controllers/ModalController';
 import UserController from '../../controllers/UserController';
 import Block from '../../utils/Block';
-
+import ChatWS, { MessageResponse } from '../../webSocket/ChatWS';
+import isArray from '../../utils/helpers/isArray';
 
 let timer: number;
 let inputValueOnModal = '';
 
 export class MessengerPage extends Block {
+  private ws: ChatWS | null;
+
   getStateFromProps() {
+    const onMessage = (response: MessageResponse) => {
+      ChatsController.addMessage(response.content);
+      const totalMessages = isArray(response.content) ? (response.content as ChatMessage[]).length : 1;
+      this.ws?.increaseOffsetBy(totalMessages);
+    };
+
     this.state = {
       activePanelButtons: false,
       handleOpenModalCreateChat: () => {
@@ -31,7 +40,7 @@ export class MessengerPage extends Block {
         });
       },
       handleModalClick: async (e: Event) => {
-        const nameButton = e?.target?.name;
+        const nameButton = (e.target as HTMLButtonElement).name;
         if (nameButton === 'close') {
           ModalController.modalClose();
         }
@@ -79,11 +88,10 @@ export class MessengerPage extends Block {
         }
       },
       handleModalChangeInput: (e: Event) => {
-        inputValueOnModal = e?.target!.value;
+        inputValueOnModal = (e.target as HTMLInputElement).value;
       },
       handleChatOpenedClick: async (e: Event) => {
-        const nameButton = e?.target?.name;
-
+        const nameButton = (e.target as HTMLButtonElement).name;
         if (nameButton === 'openPanelButtons') {
           this.state.activePanelButtons = !this.state.activePanelButtons;
         }
@@ -125,10 +133,17 @@ export class MessengerPage extends Block {
             },
           });
         }
+        if (nameButton === 'sendMessage') {
+          this.ws?.sendMessage(inputValueOnModal);
+          inputValueOnModal = '';
+        }
+      },
+      handleChatOpenedChangeInput: (e: Event) => {
+        inputValueOnModal = (e.target as HTMLInputElement).value;
       },
       handleSelectUser: async (e: Event) => {
-        const userId = Number(e?.target?.dataset?.userId);
-        const userLogin: string = e?.target?.dataset?.userLogin;
+        const userId = Number((e.target as HTMLButtonElement).dataset.userId);
+        const userLogin = (e.target as HTMLButtonElement).dataset.userLogin as string;
 
         await ChatsController.createChat({
           title: userLogin,
@@ -149,14 +164,24 @@ export class MessengerPage extends Block {
             await UserController.clearSearchUsers();
           })
       },
-      handleSelectChat: (e: Event) => {
-        const chatId = Number(e?.target?.dataset?.chatId);
+      handleSelectChat: async (e: Event) => {
+        const chatId = Number((e.target as HTMLButtonElement).dataset.chatId);
         const foundChat: ChatData = this.props.chats.allChats.find(({ id }: { id: number}) => id === chatId);
 
         ChatsController.setSelectedChat(foundChat);
+
+        if (!this.ws) {
+          this.ws = new ChatWS();
+        }
+
+        const response = await ChatsController.getToken({ chatId });
+        const userId = this.props.user.profile.id;
+        this.ws.shutdown();
+        const path = `/${userId}/${chatId}/${response?.token}`;
+        this.ws.setup(path, onMessage);
       },
       handleChangeInput: async (e: Event) => {
-        const value: string = e?.target!.value;
+        const value: string = (e.target as HTMLInputElement).value;
         clearTimeout(timer);
 
         if (value.length > 1) {
@@ -171,6 +196,7 @@ export class MessengerPage extends Block {
   }
 
   componentDidMount() {
+    this.ws = new ChatWS();
     if (!this.props.user.profile) {
       this.props.router.go('/');
     }
@@ -237,7 +263,9 @@ export class MessengerPage extends Block {
               ChatOpened
                   item=this.chats.selectedChat
                   activePanelButtons=activePanelButtons
+                  currentUser=this.user.profile
                   onClick=handleChatOpenedClick
+                  onChange=handleChatOpenedChangeInput
           }}}
           {{{
               Modal

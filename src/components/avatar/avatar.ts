@@ -22,6 +22,10 @@ export class Avatar extends Block {
     });
   }
 
+  static getName() {
+    return 'Avatar';
+  }
+
   render(): string {
     // language=hbs
     return `

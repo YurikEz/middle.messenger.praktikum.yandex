@@ -46,6 +46,10 @@ export class Input extends Block {
     });
   }
 
+  static getName() {
+    return 'Input';
+  }
+
   render(): string {
     // language=hbs
     return `

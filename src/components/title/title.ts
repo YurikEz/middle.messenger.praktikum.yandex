@@ -17,6 +17,10 @@ export class Title extends Block {
     });
   }
 
+  static getName() {
+    return 'Title';
+  }
+
   render(): string {
     // language=hbs
     return `<h1 class="title {{ extendClass }}">{{ label }}</h1>`;

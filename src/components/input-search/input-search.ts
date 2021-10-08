@@ -19,6 +19,10 @@ export class InputSearch extends Block {
     });
   }
 
+  static getName() {
+    return 'InputSearch';
+  }
+
   render(): string {
     // language=hbs
     return `

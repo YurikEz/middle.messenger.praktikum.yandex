@@ -1,26 +1,37 @@
 import './index.scss';
 import { ChatData } from '../../api/ChatsAPI';
+import { UserData } from '../../api/UserAPI';
 import Block from '../../utils/Block';
 
 interface ChatOpenedProps {
   item: ChatData,
   activePanelButtons: boolean,
+  currentUser: UserData,
   onClick?: () => void,
+  onChange?: () => void,
 }
 
 export class ChatOpened extends Block {
   constructor({
                 item,
                 activePanelButtons = false,
+                currentUser,
                 onClick= () => {},
+                onChange= () => {},
               }: ChatOpenedProps) {
     super({
       item,
       activePanelButtons,
+      currentUser,
       events: {
         click: onClick,
+        input: onChange,
       },
     });
+  }
+
+  static getName() {
+    return 'ChatOpened';
   }
 
   render(): string {
@@ -48,7 +59,17 @@ export class ChatOpened extends Block {
                     </div>
                 </div>
                 <div class="open-chat__messages">
-                    messages
+                    {{#if item.messages }}
+                        {{#each item.messages }}
+                            {{{
+                              Message
+                                    item=this
+                                    currentUserId=../this.currentUser.id
+                            }}}
+                        {{/each}}
+                    {{else}}
+                        Сообщений нет
+                    {{/if}}
                 </div>
                 <div class="open-chat__controls">
                     <button class="open-chat__button-upload" type="button">

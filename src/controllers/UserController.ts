@@ -15,7 +15,7 @@ class UserController {
 
       store.dispatch(setUser(user));
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -25,7 +25,7 @@ class UserController {
 
       store.dispatch(setUser(user));
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -33,7 +33,7 @@ class UserController {
     try {
       await this.api.updatePassword(data);
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -44,7 +44,7 @@ class UserController {
       store.dispatch(setResultSearchUsers(users));
       return users;
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 

@@ -21,6 +21,10 @@ export class Modal extends Block {
     });
   }
 
+  static getName() {
+    return 'Modal';
+  }
+
   render(): string {
     // language=hbs
     return `

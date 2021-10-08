@@ -15,7 +15,7 @@ class AuthController {
       await this.api.signup(data);
       await this.fetchUser();
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -24,7 +24,7 @@ class AuthController {
       await this.api.login(data);
       await this.fetchUser();
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -34,7 +34,7 @@ class AuthController {
 
       store.dispatch(deleteUser());
     } catch (e) {
-      alert(`Error: ${e.reason}`);
+      console.error(e.reason);
     }
   }
 
@@ -47,6 +47,7 @@ class AuthController {
       return user;
     } catch (e) {
       store.dispatch(deleteUser());
+      console.error(e.reason);
     }
   }
 }

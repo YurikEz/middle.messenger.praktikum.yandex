@@ -85,6 +85,8 @@ export default class Block<P = any> {
   }
 
   componentDidUpdate(oldProps: P, newProps: P) {
+    console.log(oldProps);
+    console.log(newProps);
     return true;
   }
 
@@ -172,7 +174,7 @@ export default class Block<P = any> {
       return;
     }
 
-    Object.entries(events).forEach(([event, listener]) => {
+    Object.entries(events).forEach(([event, listener]: [string, EventListener]) => {
       this._element!.removeEventListener(event, listener);
     });
   }
@@ -184,7 +186,7 @@ export default class Block<P = any> {
       return;
     }
 
-    Object.entries(events).forEach(([event, listener]) => {
+    Object.entries(events).forEach(([event, listener]: [string, EventListener]) => {
       this._element!.addEventListener(event, listener);
     });
   }
@@ -201,7 +203,7 @@ export default class Block<P = any> {
     /**
      * Заменяем заглушки на компоненты
      */
-    Object.entries(this.children).forEach(([id, component]) => {
+    Object.entries(this.children).forEach(([id, component]: [string, Block]) => {
       /**
        * Ищем заглушку по id
        */

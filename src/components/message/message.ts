@@ -1,39 +1,39 @@
 import './index.scss';
 import Block from '../../utils/Block';
+import { ChatMessage } from '../../api/ChatsAPI';
 
 interface MessageProps {
-  isMyMessage?: boolean,
-  content?: string,
-  img?: string,
-  time?: string,
+  item: ChatMessage,
+  currentUserId: number,
 }
 
 export class Message extends Block {
   constructor({
-                isMyMessage = false,
-                content= '',
-                img= '',
-                time= '',
+                item,
+                currentUserId,
               }: MessageProps) {
     super({
-      isMyMessage,
-      content,
-      img,
-      time,
+      item,
+      currentUserId,
+      isMyMessage: Number(currentUserId) === Number(item.user_id),
     });
+  }
+
+  static getName() {
+    return 'Message';
   }
 
   render(): string {
     // language=hbs
     return `
         <div class="message {{#if isMyMessage }}message--my{{/if}}">
-            {{#if content }}
-                <p class="message__text">{{ content }}</p>
+            {{#if item.content }}
+                <p class="message__text">{{ item.content }}</p>
             {{/if}}
             {{#if img }}
                 <img class="message__image" src="{{ img }}" alt="image">
             {{/if}}
-            <div class="message__date">{{ time }}</div>
+            <div class="message__date">{{ item.time }}</div>
         </div>
     `;
   }
