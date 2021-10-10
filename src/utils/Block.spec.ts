@@ -3,14 +3,10 @@
  */
 import Block from './Block';
 
-interface TestProps {}
-
-class TestBlock extends Block<TestProps> {
-  constructor(props: {}) {
+class TestBlock extends Block {
+  constructor(props: Record<string, unknown>) {
     super(props);
   }
-
-  componentWillUpdate() {}
 
   componentShouldUpdate() {
     return true;
@@ -22,7 +18,7 @@ class TestBlock extends Block<TestProps> {
 }
 
 describe('Block', () => {
-  const createInstance = (props: {}) => new TestBlock(props);
+  const createInstance = (props: Record<string, unknown>) => new TestBlock(props);
 
   it('checking props on constructor', () => {
     const props = { test: 'test' };
