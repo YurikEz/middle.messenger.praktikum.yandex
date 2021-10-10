@@ -2,13 +2,13 @@ import { LoginData } from '../../api/AuthAPI';
 import AuthController from '../../controllers/AuthController';
 import Block from '../../utils/Block';
 import Validator, { onCheckFormFields } from '../../utils/Validator';
-
+import { Props } from '../../utils/types';
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class LoginPage extends Block {
-  getStateFromProps() {
+  getStateFromProps(): void {
     this.state = {
       handleChangeInput: () => {
         Validator(button, fields);
@@ -20,15 +20,15 @@ export class LoginPage extends Block {
         if (Object.keys(validFields).length) {
           await AuthController.login(validFields);
         } else {
-          alert('Ошибка: Заполните форму согласно описаниям полей');
+          console.error('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     }
   }
 
-  componentDidMount() {
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger')
+  componentDidMount(): void {
+    if ((this.props as Props).user.profile) {
+      (this.props as Props).router.go('/messenger')
     }
 
     if (!fields?.length) {
@@ -38,15 +38,15 @@ export class LoginPage extends Block {
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger');
+  componentDidUpdate(): boolean {
+    if ((this.props as Props).user.profile) {
+      (this.props as Props).router.go('/messenger');
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
         <section id="login-page" class="section-wrapper">

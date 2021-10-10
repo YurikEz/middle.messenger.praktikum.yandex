@@ -13,7 +13,7 @@ export class Link extends Block {
                 href,
                 label = '',
                 extendClass = '',
-                onClick = () => {},
+                onClick,
               }: LinkProps) {
     super({
       href,
@@ -25,7 +25,7 @@ export class Link extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Link';
   }
 

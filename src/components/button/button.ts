@@ -15,7 +15,7 @@ export class Button extends Block {
                 type= 'button',
                 label= '',
                 form= '',
-                onClick= () => {},
+                onClick,
               }: ButtonProps) {
     super({
       name,
@@ -28,7 +28,7 @@ export class Button extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Button';
   }
 

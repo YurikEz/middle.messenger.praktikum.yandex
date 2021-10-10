@@ -116,7 +116,7 @@ const checkValidation = (input: HTMLInputElement | undefined) => {
   }
 };
 
-export const onCheckFormFields = (button: HTMLButtonElement | null, fields: NodeListOf<Element>) => {
+export const onCheckFormFields = (button: HTMLButtonElement | null, fields: NodeListOf<Element>): { [key: string]: string } => {
   const validInputs: {
     [key: string]: string;
   } = {};
@@ -140,10 +140,10 @@ export const onCheckFormFields = (button: HTMLButtonElement | null, fields: Node
   if (Object.keys(validInputs).length === Array.from(fields).length) {
     button?.removeAttribute('disabled');
     return validInputs;
-  } else {
-    button?.setAttribute('disabled', 'true');
-    return [];
   }
+
+  button?.setAttribute('disabled', 'true');
+  return {};
 };
 export default (button: HTMLButtonElement | null, fields: NodeListOf<Element>): void => {
   if (fields.length) {

@@ -3,13 +3,13 @@ import AuthController from '../../../controllers/AuthController';
 import UserController from '../../../controllers/UserController';
 import Block from '../../../utils/Block';
 import Validator, { onCheckFormFields } from '../../../utils/Validator';
-
+import { Props } from '../../../utils/types';
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class EditPasswordPage extends Block {
-  getStateFromProps() {
+  getStateFromProps(): void {
     this.state = {
       handleChangeInput: () => {
         Validator(button, fields);
@@ -25,15 +25,15 @@ export class EditPasswordPage extends Block {
           });
           await AuthController.logout();
         } else {
-          alert('Ошибка: Заполните форму согласно описаниям полей');
+          console.error('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     }
   }
 
-  componentDidMount() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidMount(): void {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     } else {
       if (!fields?.length) {
         fields = document.querySelectorAll('.input-field');
@@ -43,15 +43,15 @@ export class EditPasswordPage extends Block {
     }
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidUpdate(): boolean {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
         <section id="profile-edit-password" class="profile-wrapper">

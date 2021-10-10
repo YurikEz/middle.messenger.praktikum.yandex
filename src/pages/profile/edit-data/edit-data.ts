@@ -2,18 +2,17 @@ import { UserUpdateProfileProps } from '../../../api/UserAPI';
 import UserController from '../../../controllers/UserController';
 import Block from '../../../utils/Block';
 import Validator, { onCheckFormFields } from '../../../utils/Validator';
-
+import { Props } from '../../../utils/types';
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class EditDataPage extends Block {
-  getStateFromProps() {
+  getStateFromProps(): void {
     this.state = {
       handleChangeAvatar: async (e: Event) => {
         e.preventDefault();
-        // @ts-ignore
-        const avatar = (e.target as HTMLInputElement)?.files[0];
+        const avatar = (e.target as HTMLInputElement).files![0];
         const formData = new FormData();
         formData.append('avatar', avatar);
         await UserController.updateAvatar(formData);
@@ -27,17 +26,17 @@ export class EditDataPage extends Block {
 
         if (Object.keys(validFields).length) {
           await UserController.updateProfile(validFields);
-          this.props.router.go('/settings');
+          (this.props as Props).router.go('/settings');
         } else {
-          alert('Ошибка: Заполните форму согласно описаниям полей');
+          console.error('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     }
   }
 
-  componentDidMount() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidMount(): void {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     } else {
       if (!fields?.length) {
         fields = document.querySelectorAll('.input-field');
@@ -47,15 +46,15 @@ export class EditDataPage extends Block {
     }
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidUpdate(): boolean {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
         <section id="profile-edit-data" class="profile-wrapper">

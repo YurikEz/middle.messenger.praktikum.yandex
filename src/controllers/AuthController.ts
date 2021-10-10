@@ -1,7 +1,7 @@
 import { AuthAPI, LoginData, SignUpData } from '../api/AuthAPI';
-import { UserData } from '../api/UserAPI';
 import { store } from '../store';
 import { deleteUser, setUser } from '../store/user';
+import { Action } from '../utils/store';
 
 class AuthController {
   private api: AuthAPI;
@@ -32,21 +32,19 @@ class AuthController {
     try {
       await this.api.logout();
 
-      store.dispatch(deleteUser());
+      store.dispatch(deleteUser() as Action);
     } catch (e) {
       console.error(e.reason);
     }
   }
 
-  async fetchUser(): Promise<UserData | void> {
+  async fetchUser() {
     try {
       const user = await this.api.read();
 
-      store.dispatch(setUser(user));
-
-      return user;
+      store.dispatch(setUser(user) as Action);
     } catch (e) {
-      store.dispatch(deleteUser());
+      store.dispatch(deleteUser() as Action);
       console.error(e.reason);
     }
   }

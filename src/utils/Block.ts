@@ -2,7 +2,7 @@ import Handlebars from 'handlebars/dist/handlebars';
 import { nanoid } from 'nanoid';
 
 import EventBus from './EventBus';
-import { Nullable, Values } from './types';
+import { Nullable, Values, Props, PropsOrUndefined } from './types';
 
 type Events = Values<typeof Block.EVENTS>;
 
@@ -16,19 +16,19 @@ export default class Block<P = any> {
 
   public id = nanoid(6);
   _meta: {
-    props: any;
+    props: PropsOrUndefined;
   };
 
   _element: Nullable<HTMLElement> = null;
-  props: P;
-  children: {[id: string]: Block} = {};
+  props: PropsOrUndefined;
+  children: { [id: string]: Block } = {};
 
   eventBus: () => EventBus<Events>;
 
-  state: any = {};
-  refs: {[key: string]: HTMLElement} = {};
+  state: PropsOrUndefined = {};
+  refs: { [key: string]: HTMLElement } = {};
 
-  public constructor(props?: P) {
+  public constructor(props?: PropsOrUndefined) {
     const eventBus = new EventBus<Events>();
 
     this._meta = {
@@ -37,7 +37,7 @@ export default class Block<P = any> {
 
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || {} as P);
+    this.props = this._makePropsProxy(props || {} as PropsOrUndefined);
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -47,36 +47,36 @@ export default class Block<P = any> {
     eventBus.emit(Block.EVENTS.INIT, this.props);
   }
 
-  _registerEvents(eventBus: EventBus<Events>) {
+  _registerEvents(eventBus: EventBus<Events>): void {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  _createResources() {
+  _createResources(): void {
     this._element = this._createDocumentElement('div');
   }
 
-  getStateFromProps(props: any): void {
+  getStateFromProps(props: PropsOrUndefined): void {
     this.props = props;
     this.state = {};
   }
 
-  init() {
+  init(): void {
     this._createResources();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER, this.props);
   }
 
-  _componentDidMount(props: P) {
+  _componentDidMount(props: P): void {
     this.componentDidMount(props);
   }
 
-  componentDidMount(props: P) {
+  componentDidMount(props: P): void {
     this.props = props;
   }
 
-  _componentDidUpdate(oldProps: P, newProps: P) {
+  _componentDidUpdate(oldProps: P, newProps: P): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -84,13 +84,13 @@ export default class Block<P = any> {
     this._render();
   }
 
-  componentDidUpdate(oldProps: P, newProps: P) {
+  componentDidUpdate(oldProps: P, newProps: P): boolean {
     console.log(oldProps);
     console.log(newProps);
     return true;
   }
 
-  setProps = (nextProps: P) => {
+  setProps = (nextProps: P): void => {
     if (!nextProps) {
       return;
     }
@@ -98,7 +98,7 @@ export default class Block<P = any> {
     Object.assign(this.props, nextProps);
   };
 
-  setState = (nextState: any) => {
+  setState = (nextState: P): void => {
     if (!nextState) {
       return;
     }
@@ -106,15 +106,15 @@ export default class Block<P = any> {
     Object.assign(this.state, nextState);
   };
 
-  get element() {
+  get element(): any {
     return this._element;
   }
 
-  _render() {
+  _render(): void {
     const fragment = this._compile();
 
     this._removeEvents();
-    const newElement = fragment.firstElementChild!;
+    const newElement = fragment.firstElementChild as HTMLElement;
 
     this._element!.replaceWith(newElement);
 
@@ -136,15 +136,15 @@ export default class Block<P = any> {
       }, 100)
     }
 
-    return this.element!;
+    return this.element as HTMLElement;
   }
 
-  _makePropsProxy(props: any): any {
+  _makePropsProxy(props: PropsOrUndefined): any {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
 
-    return new Proxy(props as unknown as object, {
+    return new Proxy(props as Props, {
       get(target: Record<string, unknown>, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
@@ -154,7 +154,7 @@ export default class Block<P = any> {
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в след итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
       deleteProperty() {
@@ -163,12 +163,12 @@ export default class Block<P = any> {
     }) as unknown as P;
   }
 
-  _createDocumentElement(tagName: string) {
+  _createDocumentElement(tagName: string): HTMLElement {
     return document.createElement(tagName);
   }
 
-  _removeEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+  _removeEvents(): void {
+    const events: Record<string, () => void> = (this.props as PropsOrUndefined)!.events;
 
     if (!events || !this._element) {
       return;
@@ -179,8 +179,8 @@ export default class Block<P = any> {
     });
   }
 
-  _addEvents() {
-    const events: Record<string, () => void> = (this.props as any).events;
+  _addEvents(): void {
+    const events: Record<string, () => void> = (this.props as PropsOrUndefined)!.events;
 
     if (!events) {
       return;
@@ -226,11 +226,11 @@ export default class Block<P = any> {
     return fragment.content;
   }
 
-  show() {
+  show(): void {
     this.getContent().style.display = 'block';
   }
 
-  hide() {
+  hide(): void {
     this.getContent().style.display = 'none';
   }
 }

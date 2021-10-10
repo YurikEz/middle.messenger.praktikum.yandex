@@ -2,13 +2,13 @@ import { SignUpData } from '../../api/AuthAPI';
 import AuthController from '../../controllers/AuthController';
 import Block from '../../utils/Block';
 import Validator, { onCheckFormFields } from '../../utils/Validator';
-
+import { Props } from '../../utils/types';
 
 let fields: NodeListOf<Element>;
 let button: HTMLButtonElement | null = null;
 
 export class SignUpPage extends Block {
-  getStateFromProps() {
+  getStateFromProps(): void {
     this.state = {
       handleChangeInput: () => {
         Validator(button, fields);
@@ -20,33 +20,33 @@ export class SignUpPage extends Block {
         if (Object.keys(validFields).length) {
           await AuthController.signup(validFields);
         } else {
-          alert('Ошибка: Заполните форму согласно описаниям полей');
+          console.error('Ошибка: Заполните форму согласно описаниям полей');
         }
       },
     };
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (!fields?.length) {
       fields = document.querySelectorAll('.input-field');
       button = document.querySelector('.button');
       Validator(button, fields);
     }
 
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger')
+    if ((this.props as Props).user.profile) {
+      (this.props as Props).router.go('/messenger')
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger')
+  componentDidUpdate(): boolean {
+    if ((this.props as Props).user.profile) {
+      (this.props as Props).router.go('/messenger')
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
         <section id="signup-page" class="section-wrapper">

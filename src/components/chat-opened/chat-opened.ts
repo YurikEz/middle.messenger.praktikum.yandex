@@ -16,8 +16,8 @@ export class ChatOpened extends Block {
                 item,
                 activePanelButtons = false,
                 currentUser,
-                onClick= () => {},
-                onChange= () => {},
+                onClick,
+                onChange,
               }: ChatOpenedProps) {
     super({
       item,
@@ -30,7 +30,7 @@ export class ChatOpened extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'ChatOpened';
   }
 

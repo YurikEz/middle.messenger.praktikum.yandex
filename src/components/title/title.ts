@@ -17,7 +17,7 @@ export class Title extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Title';
   }
 

@@ -6,7 +6,7 @@ export class ButtonSend extends Block {
     super({});
   }
 
-  static getName() {
+  static getName(): string {
     return 'ButtonSend';
   }
 

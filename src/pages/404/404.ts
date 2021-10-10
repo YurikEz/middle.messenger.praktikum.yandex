@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 
 export class _404 extends Block {
-  render() {
+  render(): string {
     return `
       <section>
         {{{

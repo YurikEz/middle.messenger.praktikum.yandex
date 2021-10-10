@@ -1,6 +1,6 @@
 import './index.scss';
-import Block from '../../utils/Block';
 import { ChatMessage } from '../../api/ChatsAPI';
+import Block from '../../utils/Block';
 
 interface MessageProps {
   item: ChatMessage,
@@ -19,7 +19,7 @@ export class Message extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Message';
   }
 

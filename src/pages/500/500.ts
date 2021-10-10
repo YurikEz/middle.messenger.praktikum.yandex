@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 
 export class _500 extends Block {
-  render() {
+  render(): string {
     return `
       <section>
         {{{

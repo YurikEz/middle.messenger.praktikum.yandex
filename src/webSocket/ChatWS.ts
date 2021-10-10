@@ -1,5 +1,6 @@
-import WS from './BaseWS';
 import { ChatMessage } from '../api/ChatsAPI';
+
+import WS from './BaseWS';
 
 export interface onMessageData {
   data: string;
@@ -23,7 +24,7 @@ export default class ChatWS extends WS {
     this.offset = 0;
   }
 
-  setup(path: string, onMessage: (d: MessageResponse) => void) {
+  setup(path: string, onMessage: (d: MessageResponse) => void): void {
     this.connect(path);
     this.rePing();
     this.addListener('message', wsResponse => {
@@ -40,21 +41,20 @@ export default class ChatWS extends WS {
     });
   }
 
-  sendMessage(message: string) {
-    console.log(message);
+  sendMessage(message: string): void {
     this.send({ type: 'message', content: message });
   }
 
-  shutdown() {
+  shutdown(): void {
     super.shutdown();
     this.offset = 0;
   }
 
-  getOldMessages() {
+  getOldMessages(): void {
     this.send({ type: 'get old', content: `${this.offset}` });
   }
 
-  increaseOffsetBy(by: number) {
+  increaseOffsetBy(by: number): void {
     this.offset += by;
   }
 }

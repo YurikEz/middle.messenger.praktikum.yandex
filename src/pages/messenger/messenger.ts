@@ -4,16 +4,17 @@ import ChatsController from '../../controllers/ChatsController';
 import ModalController from '../../controllers/ModalController';
 import UserController from '../../controllers/UserController';
 import Block from '../../utils/Block';
-import ChatWS, { MessageResponse } from '../../webSocket/ChatWS';
 import isArray from '../../utils/helpers/isArray';
+import { Props } from '../../utils/types';
+import ChatWS, { MessageResponse } from '../../webSocket/ChatWS';
 
-let timer: number;
+let timer: ReturnType<typeof setTimeout>;
 let inputValueOnModal = '';
 
 export class MessengerPage extends Block {
   private ws: ChatWS | null;
 
-  getStateFromProps() {
+  getStateFromProps(): void {
     const onMessage = (response: MessageResponse) => {
       ChatsController.addMessage(response.content);
       const totalMessages = isArray(response.content) ? (response.content as ChatMessage[]).length : 1;
@@ -64,22 +65,24 @@ export class MessengerPage extends Block {
               .then(async (data) => {
                 const foundUser = data?.find(({ login }: { login: string }) => login === inputValueOnModal);
 
-                if (nameButton === 'addUser') {
-                  await ChatsController.addUsersInChat({
-                    users: [foundUser!.id],
-                    chatId: this.props.chats.selectedChat!.id,
-                  });
-                }
+                if (foundUser) {
+                  if (nameButton === 'addUser') {
+                    await ChatsController.addUsersInChat({
+                      users: [(foundUser as Props).id],
+                      chatId: (this.props as Props).chats.selectedChat.id,
+                    });
+                  }
 
-                if (nameButton === 'deleteUser') {
-                  await ChatsController.deleteUsersInChat({
-                    users: [foundUser!.id],
-                    chatId: this.props.chats.selectedChat!.id,
-                  });
-                }
+                  if (nameButton === 'deleteUser') {
+                    await ChatsController.deleteUsersInChat({
+                      users: [(foundUser as Props).id],
+                      chatId: (this.props as Props).chats.selectedChat.id,
+                    });
+                  }
 
-                await ChatsController.fetchChats();
-                await UserController.clearSearchUsers();
+                  await ChatsController.fetchChats();
+                  await UserController.clearSearchUsers();
+                }
               });
 
             ModalController.modalClose();
@@ -93,10 +96,10 @@ export class MessengerPage extends Block {
       handleChatOpenedClick: async (e: Event) => {
         const nameButton = (e.target as HTMLButtonElement).name;
         if (nameButton === 'openPanelButtons') {
-          this.state.activePanelButtons = !this.state.activePanelButtons;
+          (this.state as Props).activePanelButtons = !(this.state as Props).activePanelButtons;
         }
         if (nameButton === 'openModalAddUser') {
-          this.state.activePanelButtons = false;
+          (this.state as Props).activePanelButtons = false;
 
           ModalController.modalOpen({
             active: true,
@@ -115,7 +118,7 @@ export class MessengerPage extends Block {
           });
         }
         if (nameButton === 'openModalDeleteUser') {
-          this.state.activePanelButtons = false;
+          (this.state as Props).activePanelButtons = false;
 
           ModalController.modalOpen({
             active: true,
@@ -154,11 +157,13 @@ export class MessengerPage extends Block {
             if (data?.length) {
               const newChat = data.find(({ title }: { title: string }) => title === userLogin);
 
-              await ChatsController.addUsersInChat({
-                users: [userId],
-                chatId: newChat!.id,
-              });
-              await ChatsController.fetchChats();
+              if (newChat) {
+                await ChatsController.addUsersInChat({
+                  users: [userId],
+                  chatId: newChat.id,
+                });
+                await ChatsController.fetchChats();
+              }
             }
 
             await UserController.clearSearchUsers();
@@ -166,7 +171,7 @@ export class MessengerPage extends Block {
       },
       handleSelectChat: async (e: Event) => {
         const chatId = Number((e.target as HTMLButtonElement).dataset.chatId);
-        const foundChat: ChatData = this.props.chats.allChats.find(({ id }: { id: number}) => id === chatId);
+        const foundChat: ChatData = (this.props as Props).chats.allChats.find(({ id }: { id: number}) => id === chatId);
 
         ChatsController.setSelectedChat(foundChat);
 
@@ -175,7 +180,7 @@ export class MessengerPage extends Block {
         }
 
         const response = await ChatsController.getToken({ chatId });
-        const userId = this.props.user.profile.id;
+        const userId = (this.props as Props).user.profile.id;
         this.ws.shutdown();
         const path = `/${userId}/${chatId}/${response?.token}`;
         this.ws.setup(path, onMessage);
@@ -195,28 +200,28 @@ export class MessengerPage extends Block {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.ws = new ChatWS();
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
 
-    if (!this.props.chats.allChats) {
+    if (!(this.props as Props).chats.allChats) {
       (async () => {
         await ChatsController.fetchChats();
       })();
     }
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidUpdate(): boolean {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
       <section id="messenger" class="messenger">

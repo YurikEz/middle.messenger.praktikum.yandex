@@ -11,12 +11,12 @@ import EditDataPage from './pages/profile/edit-data';
 import EditPasswordPage from './pages/profile/edit-password';
 import SignUpPage from './pages/signup';
 import Block from './utils/Block';
-import registerComponent from './utils/RegisterComponent';
+import registerComponent, { BlockConstructable } from './utils/RegisterComponent';
 import Router from './utils/Router';
 
-const components = require('./components/**/index.ts') as {[key: string]: { default: typeof Block }};
+const components = require('./components/**/index.ts') as {[key: string]: { default: Block }};
 
-Object.values(components).forEach(component => registerComponent(component.default));
+Object.values(components).forEach(component => registerComponent(component.default as unknown as BlockConstructable));
 
 AuthController.fetchUser()
   .then(() => {

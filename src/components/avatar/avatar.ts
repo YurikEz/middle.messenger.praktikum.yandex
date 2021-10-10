@@ -11,7 +11,7 @@ export class Avatar extends Block {
   constructor({
                 url= '',
                 disabled = false,
-                onChange= () => {},
+                onChange,
               }: AvatarProps) {
     super({
       url,
@@ -22,7 +22,7 @@ export class Avatar extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Avatar';
   }
 

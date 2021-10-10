@@ -27,7 +27,7 @@ export class Input extends Block {
     autocomplete= 'off',
     disabled = false,
     value = '',
-    onChange = () => {},
+    onChange,
   }: InputProps) {
     super({
       name,
@@ -46,7 +46,7 @@ export class Input extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Input';
   }
 

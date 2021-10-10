@@ -10,7 +10,7 @@ interface ButtonUserProps {
 export class ButtonUser extends Block {
   constructor({
                 item,
-                onClick = () => {},
+                onClick,
               }: ButtonUserProps) {
     super({
       item,
@@ -20,7 +20,7 @@ export class ButtonUser extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'ButtonUser';
   }
 

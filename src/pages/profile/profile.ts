@@ -1,9 +1,10 @@
 import './index.scss';
 import AuthController from '../../controllers/AuthController';
 import Block from '../../utils/Block';
+import { Props } from '../../utils/types';
 
 export class ProfilePage extends Block {
-  getStateFromProps() {
+  getStateFromProps(): void {
     this.state = {
       onLogout: (e: Event) => {
         e.preventDefault();
@@ -12,21 +13,21 @@ export class ProfilePage extends Block {
     }
   }
 
-  componentDidMount() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidMount(): void {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
   }
 
-  componentDidUpdate() {
-    if (!this.props.user.profile) {
-      this.props.router.go('/');
+  componentDidUpdate(): boolean {
+    if (!(this.props as Props).user.profile) {
+      (this.props as Props).router.go('/');
     }
 
     return true;
   }
 
-  render() {
+  render(): string {
     // language=hbs
     return `
       <section id="profile" class="profile-wrapper">

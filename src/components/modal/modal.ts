@@ -5,8 +5,8 @@ import Block from '../../utils/Block';
 export class Modal extends Block {
   constructor({
                 item,
-                onClick = () => {},
-                onChange = () => {},
+                onClick,
+                onChange,
               }: {
                 item: ModalProps,
                 onClick?: () => void,
@@ -21,7 +21,7 @@ export class Modal extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Modal';
   }
 

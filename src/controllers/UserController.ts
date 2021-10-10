@@ -1,6 +1,7 @@
 import { UserAPI, SearchUsersProps, UserData, UserUpdatePasswordProps, UserUpdateProfileProps } from '../api/UserAPI';
-import { store } from "../store";
-import { setUser, setResultSearchUsers, clearResultSearchUsers } from "../store/user";
+import { store } from '../store';
+import { setUser, setResultSearchUsers, clearResultSearchUsers } from '../store/user';
+import { Action } from '../utils/store';
 
 class UserController {
   private api: UserAPI;
@@ -13,17 +14,17 @@ class UserController {
     try {
       const user: UserData = await this.api.updateProfile(data);
 
-      store.dispatch(setUser(user));
+      store.dispatch(setUser(user) as Action);
     } catch (e) {
       console.error(e.reason);
     }
   }
 
-  async updateAvatar(data: any) {
+  async updateAvatar(data: FormData) {
     try {
       const user: UserData = await this.api.updateAvatar(data);
 
-      store.dispatch(setUser(user));
+      store.dispatch(setUser(user) as Action);
     } catch (e) {
       console.error(e.reason);
     }
@@ -37,11 +38,11 @@ class UserController {
     }
   }
 
-  async searchUsers(data: SearchUsersProps) {
+  async searchUsers(data: SearchUsersProps): Promise<[UserData] | undefined> {
     try {
-      const users: UserData[] = await this.api.searchUsers(data);
+      const users: [UserData] = await this.api.searchUsers(data);
 
-      store.dispatch(setResultSearchUsers(users));
+      store.dispatch(setResultSearchUsers(users) as Action);
       return users;
     } catch (e) {
       console.error(e.reason);
@@ -49,7 +50,7 @@ class UserController {
   }
 
   async clearSearchUsers() {
-    store.dispatch(clearResultSearchUsers());
+    store.dispatch(clearResultSearchUsers() as Action);
   }
 }
 

@@ -1,5 +1,6 @@
 import Block from '../utils/Block';
 import { Store } from '../utils/store';
+import { Props } from '../utils/types';
 
 import chats from './chats';
 import modal from './modal';
@@ -12,13 +13,13 @@ export const store = new Store({
 });
 
 
-export function connect(stateToProps: (state: any) => any, Component: typeof Block) {
+export function connect(stateToProps: (state: Props) => any, Component: typeof Block): any {
   return class WithStore extends Component {
-    constructor(props: any) {
+    constructor(props: Props) {
       super({...props, ...stateToProps(store.getState())});
     }
 
-    componentDidMount(props: any) {
+    componentDidMount(props: Props) {
       super.componentDidMount(props);
 
       store.on('changed', () => {

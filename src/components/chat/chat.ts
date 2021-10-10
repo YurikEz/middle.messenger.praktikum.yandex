@@ -10,7 +10,7 @@ interface ChatProps {
 export class Chat extends Block {
   constructor({
                 item,
-                onClick = () => {},
+                onClick,
               }: ChatProps) {
     super({
       item,
@@ -20,7 +20,7 @@ export class Chat extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'Chat';
   }
 

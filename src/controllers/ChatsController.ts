@@ -2,6 +2,7 @@ import { ChatsAPI, ChatData, createChatProps, addUsersInChatProps, ChatTokenData
 import { store } from '../store';
 import { setChats, setSelectedChat, addMessage } from '../store/chats';
 import isArray from '../utils/helpers/isArray';
+import { Action } from '../utils/store';
 
 class ChatsController {
   private api: ChatsAPI;
@@ -12,7 +13,7 @@ class ChatsController {
 
   async createChat(data: createChatProps) {
     try {
-      return await this.api.createChat(data);
+      await this.api.createChat(data);
     } catch (e) {
       console.error(e.reason);
     }
@@ -20,7 +21,7 @@ class ChatsController {
 
   async addUsersInChat(data: addUsersInChatProps) {
     try {
-      return await this.api.addUsersInChat(data);
+      await this.api.addUsersInChat(data);
     } catch (e) {
       console.error(e.reason);
     }
@@ -28,21 +29,21 @@ class ChatsController {
 
   async deleteUsersInChat(data: addUsersInChatProps) {
     try {
-      return await this.api.deleteUsersInChat(data);
+      await this.api.deleteUsersInChat(data);
     } catch (e) {
       console.error(e.reason);
     }
   }
 
   setSelectedChat(data: ChatData) {
-    store.dispatch(setSelectedChat(data));
+    store.dispatch(setSelectedChat(data) as Action);
   }
 
-  async fetchChats(): Promise<[ChatData] | void> {
+  async fetchChats(): Promise<[ChatData] | undefined> {
     try {
       const chats = await this.api.read();
 
-      store.dispatch(setChats(chats));
+      store.dispatch(setChats(chats) as Action);
 
       return chats;
     } catch (e) {
@@ -52,7 +53,7 @@ class ChatsController {
 
   async getToken(data: ChatTokenData): Promise<ChatTokenResponse | undefined> {
     try {
-      return this.api.getToken(data);
+      return await this.api.getToken(data);
     } catch (e) {
       console.error(e.reason);
     }
@@ -61,10 +62,10 @@ class ChatsController {
   addMessage(message: ChatMessage | ChatMessage[]) {
     if (isArray(message)) {
       for (let i = 0; i < (message as ChatMessage[]).length; i++) {
-        store.dispatch(addMessage((message as ChatMessage[])[i]));
+        store.dispatch(addMessage((message as ChatMessage[])[i]) as Action);
       }
     } else {
-      store.dispatch(addMessage(message as ChatMessage));
+      store.dispatch(addMessage(message as ChatMessage) as Action);
     }
   }
 }

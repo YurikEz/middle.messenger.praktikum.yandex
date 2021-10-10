@@ -10,7 +10,7 @@ export class ButtonBack extends Block {
     super({ href });
   }
 
-  static getName() {
+  static getName(): string {
     return 'ButtonBack';
   }
 

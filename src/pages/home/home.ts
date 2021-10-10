@@ -1,15 +1,16 @@
 import Block from '../../utils/Block';
+import { Props } from '../../utils/types';
 
 export class HomePage extends Block {
-  componentDidMount() {
-    if (this.props.user.profile) {
-      this.props.router.go('/messenger')
+  componentDidMount(): void {
+    if ((this.props as Props).user.profile) {
+      (this.props as Props).router.go('/messenger')
     } else {
-      this.props.router.go('/login')
+      (this.props as Props).router.go('/login')
     }
   }
 
-  render() {
+  render(): string {
     return `<div></div>`;
   }
 }

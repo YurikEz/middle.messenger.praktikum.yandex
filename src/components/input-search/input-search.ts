@@ -9,7 +9,7 @@ interface InputSearchProps {
 export class InputSearch extends Block {
   constructor({
                 value = '',
-                onChange = () => {},
+                onChange,
               }: InputSearchProps) {
     super({
       value,
@@ -19,7 +19,7 @@ export class InputSearch extends Block {
     });
   }
 
-  static getName() {
+  static getName(): string {
     return 'InputSearch';
   }
 

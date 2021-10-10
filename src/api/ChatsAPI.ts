@@ -31,15 +31,6 @@ export interface ChatTokenResponse {
   token: string;
 }
 
-export interface ChatMessage {
-  chat_id: number;
-  time: string;
-  type: string;
-  user_id: string;
-  content: string;
-  file?: ChatFile;
-}
-
 export interface ChatFile {
   id: number;
   user_id: number;

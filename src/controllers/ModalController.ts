@@ -1,5 +1,6 @@
 import { store } from '../store';
 import { modalOpen, modalClose } from '../store/modal';
+import { Action } from '../utils/store';
 
 export interface ModalProps {
   active: boolean,
@@ -10,14 +11,12 @@ export interface ModalProps {
 }
 
 class ModalController {
-  constructor() {}
-
   modalOpen(payload: ModalProps) {
-    store.dispatch(modalOpen(payload));
+    store.dispatch(modalOpen(payload) as Action);
   }
 
   modalClose() {
-    store.dispatch(modalClose());
+    store.dispatch(modalClose() as Action);
   }
 }
 
