@@ -2,9 +2,9 @@
   background-color: var(--lightGray);
   display: block;
   margin: 10px auto 10px 0;
+  min-width: 200px;
   padding: 11px;
   position: relative;
-  min-width: 200px;
 
   &--my {
     background-color: var(--aliceBlue);

@@ -35,7 +35,7 @@ export class Avatar extends Block {
                     <img class="avatar avatar--disabled" src="https://ya-praktikum.tech/api/v2/resources{{ url }}" alt="person avatar">
                 {{else}}
                     <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{ url }}" alt="person avatar">
-                    <input id="image-uploader" type="file" accept="image/jpeg, image/png">
+                    <input id="image-uploader" class="image-uploader" type="file" accept="image/jpeg, image/png">
                 {{/if}}
             </label>
         {{else}}
@@ -44,7 +44,7 @@ export class Avatar extends Block {
                     <div class="avatar avatar--disabled"></div>
                 {{else}}
                     <div class="avatar"></div>
-                    <input id="image-uploader" type="file" accept="image/jpeg, image/png">
+                    <input id="image-uploader" class="image-uploader" type="file" accept="image/jpeg, image/png">
                 {{/if}}
             </label>
         {{/if}}
