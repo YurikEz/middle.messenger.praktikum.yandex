@@ -48,6 +48,7 @@ class ChatsController {
       return chats;
     } catch (e) {
       console.error(e.reason);
+      return e.reason;
     }
   }
 
@@ -56,6 +57,7 @@ class ChatsController {
       return await this.api.getToken(data);
     } catch (e) {
       console.error(e.reason);
+      return e.reason;
     }
   }
 

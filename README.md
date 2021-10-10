@@ -7,6 +7,7 @@
 - Запустить Eslint `yarn eslint || npm run eslint`
 - Запустить Stylelint `yarn stylelint || npm run stylelint`
 - Запустить Проверку типов `yarn tsc || npm run tsc`
+- Запустить тесты `yarn test || npm run test`
 
 
 # Макет в [Figma](https://www.figma.com/file/rLeCAzgqTfcNl8OZZmj6se/Chat?node-id=0%3A1)

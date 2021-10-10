@@ -46,6 +46,7 @@ class UserController {
       return users;
     } catch (e) {
       console.error(e.reason);
+      return e.reason;
     }
   }
 

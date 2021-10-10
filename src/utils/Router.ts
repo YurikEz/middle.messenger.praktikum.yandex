@@ -1,7 +1,6 @@
 import Block from './Block';
 import { Props } from './types';
 
-
 class Route {
   private pathname: string;
   private blockClass: typeof Block;

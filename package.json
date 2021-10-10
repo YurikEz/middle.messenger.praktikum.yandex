@@ -12,19 +12,25 @@
     "server": "node server",
     "eslint": "eslint src",
     "stylelint": "stylelint static/css && stylelint src",
-    "checktypes": "tsc"
+    "checktypes": "tsc",
+    "test": "jest"
   },
   "engines": {
     "node": ">=12.x"
   },
   "dependencies": {
-    "@types/node": "^16.10.3",
+    "@types/sinon": "^10.0.4",
     "express": "^4.17.1",
     "handlebars": "^4.7.7",
     "nanoid": "^3.1.25",
-    "sass": "^1.38.0"
+    "sass": "^1.38.0",
+    "sinon": "^11.1.2",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.3",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
     "babel-core": "^6.0.20",
@@ -35,6 +41,7 @@
     "babel-preset-stage-0": "^6.0.15",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.24.2",
+    "jest": "^27.1.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-static-files-copy": "^2.6.0",
