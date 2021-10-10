@@ -38,3 +38,22 @@ body {
 .profile-inner {
   padding: 100px 0;
 }
+
+.form {
+  &__fields {
+    margin-bottom: 83px;
+  }
+
+  &__controls {
+    padding: 0 40px;
+    text-align: center;
+
+    .button-link {
+      padding: 5px 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
