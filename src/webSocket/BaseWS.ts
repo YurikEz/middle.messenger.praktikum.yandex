@@ -7,7 +7,7 @@ export default abstract class WS {
   static DEFAULT_INTERVAL = 60 * 1000;
   static API_URL = 'wss://ya-praktikum.tech/ws';
   protected endpoint: string;
-  protected pingInterval: number | null;
+  protected pingInterval: NodeJS.Timeout | null;
   protected ws: WebSocket | null;
 
   protected constructor(endpoint: string) {
