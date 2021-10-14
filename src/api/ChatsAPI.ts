@@ -2,25 +2,25 @@ import BaseAPI from './BaseAPI';
 import { UserData } from './UserAPI';
 
 export interface ChatData {
-  id: number,
-  title: string,
-  avatar: string,
-  unread_count: number,
+  id: number;
+  title: string;
+  avatar: string;
+  unread_count: number;
   last_message: {
-    user: UserData,
-    time: string,
-    content: string,
-  },
-  messages?: ChatMessage[],
+    user: UserData;
+    time: string;
+    content: string;
+  };
+  messages?: ChatMessage[];
 }
 
 export interface createChatProps {
-  title: string,
+  title: string;
 }
 
 export interface addUsersInChatProps {
-  users: number[],
-  chatId: number,
+  users: number[];
+  chatId: number;
 }
 
 export interface ChatTokenData {
@@ -72,10 +72,6 @@ export class ChatsAPI extends BaseAPI {
   }
 
   read(): Promise<[ChatData]> {
-    return this.http.get()
+    return this.http.get();
   }
-
-  delete: undefined;
-  create: undefined;
-  update: undefined;
 }

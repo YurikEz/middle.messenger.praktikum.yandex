@@ -19,16 +19,10 @@
     "node": ">=12.x"
   },
   "dependencies": {
-    "@types/sinon": "^10.0.4",
-    "express": "^4.17.1",
-    "handlebars": "^4.7.7",
-    "nanoid": "^3.1.25",
-    "sass": "^1.38.0",
-    "sinon": "^11.1.2",
-    "ts-jest": "^27.0.5",
-    "ts-node": "^10.2.1"
+    "express": "^4.17.1"
   },
   "devDependencies": {
+    "@types/sinon": "^10.0.4",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.3",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
@@ -50,7 +44,13 @@
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "handlebars": "^4.7.7",
+    "nanoid": "^3.1.25",
+    "sass": "^1.38.0",
+    "sinon": "^11.1.2",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1"
   },
   "staticFiles": {
     "staticPath": "static",

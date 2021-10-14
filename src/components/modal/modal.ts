@@ -8,9 +8,9 @@ export class Modal extends Block {
                 onClick,
                 onChange,
               }: {
-                item: ModalProps,
-                onClick?: () => void,
-                onChange?: () => void,
+                item: ModalProps;
+                onClick?: () => void;
+                onChange?: () => void;
               }) {
     super({
       item,

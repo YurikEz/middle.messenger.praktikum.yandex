@@ -3,8 +3,8 @@ import { ChatMessage } from '../../api/ChatsAPI';
 import Block from '../../utils/Block';
 
 interface MessageProps {
-  item: ChatMessage,
-  currentUserId: number,
+  item: ChatMessage;
+  currentUserId: number;
 }
 
 export class Message extends Block {
@@ -15,7 +15,7 @@ export class Message extends Block {
     super({
       item,
       currentUserId,
-      isMyMessage: Number(currentUserId) === Number(item.user_id),
+      isMyMessage: currentUserId === Number(item.user_id),
     });
   }
 

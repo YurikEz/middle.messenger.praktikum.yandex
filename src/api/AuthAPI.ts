@@ -26,10 +26,6 @@ export class AuthAPI extends BaseAPI {
   }
 
   read(): Promise<UserData> {
-    return this.http.get('/user')
+    return this.http.get('/user');
   }
-
-  delete: undefined;
-  create: undefined;
-  update: undefined;
 }

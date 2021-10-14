@@ -28,7 +28,7 @@ export class LoginPage extends Block {
 
   componentDidMount(): void {
     if ((this.props as Props).user.profile) {
-      (this.props as Props).router.go('/messenger')
+      (this.props as Props).router.go('/messenger');
     }
 
     if (!fields?.length) {

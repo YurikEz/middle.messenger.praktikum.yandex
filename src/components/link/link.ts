@@ -2,10 +2,10 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface LinkProps {
-  href: string,
-  label?: string,
-  extendClass?: string,
-  onClick?: () => void,
+  href: string;
+  label?: string;
+  extendClass?: string;
+  onClick?: () => void;
 }
 
 export class Link extends Block {

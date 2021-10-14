@@ -7,7 +7,7 @@ class UserController {
   private api: UserAPI;
 
   constructor() {
-    this.api = new UserAPI()
+    this.api = new UserAPI();
   }
 
   async updateProfile(data: UserUpdateProfileProps) {

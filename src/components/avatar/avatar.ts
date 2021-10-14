@@ -2,14 +2,14 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface AvatarProps {
-  url?: string,
-  disabled?: boolean,
-  onChange?: () => void,
+  url?: string;
+  disabled?: boolean;
+  onChange?: () => void;
 }
 
 export class Avatar extends Block {
   constructor({
-                url= '',
+                url = '',
                 disabled = false,
                 onChange,
               }: AvatarProps) {

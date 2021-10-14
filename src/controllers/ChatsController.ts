@@ -8,7 +8,7 @@ class ChatsController {
   private api: ChatsAPI;
 
   constructor() {
-    this.api = new ChatsAPI()
+    this.api = new ChatsAPI();
   }
 
   async createChat(data: createChatProps) {

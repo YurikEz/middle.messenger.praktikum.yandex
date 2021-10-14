@@ -7,7 +7,7 @@ class AuthController {
   private api: AuthAPI;
 
   constructor() {
-    this.api = new AuthAPI()
+    this.api = new AuthAPI();
   }
 
   async signup(data: SignUpData) {

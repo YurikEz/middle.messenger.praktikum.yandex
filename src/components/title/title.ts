@@ -2,8 +2,8 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface TitleProps {
-  label: string,
-  extendClass?: string,
+  label: string;
+  extendClass?: string;
 }
 
 export class Title extends Block {

@@ -2,19 +2,19 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface ButtonProps {
-  name: string,
-  type?: string,
-  label?: string,
-  form?: string,
-  onClick?: () => void,
+  name: string;
+  type?: string;
+  label?: string;
+  form?: string;
+  onClick?: () => void;
 }
 
 export class Button extends Block {
   constructor({
                 name,
-                type= 'button',
-                label= '',
-                form= '',
+                type = 'button',
+                label = '',
+                form = '',
                 onClick,
               }: ButtonProps) {
     super({

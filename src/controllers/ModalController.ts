@@ -3,11 +3,11 @@ import { modalOpen, modalClose } from '../store/modal';
 import { Action } from '../utils/store';
 
 export interface ModalProps {
-  active: boolean,
-  title: string,
+  active: boolean;
+  title: string;
   data: {
-    [key: string]: unknown,
-  },
+    [key: string]: unknown;
+  };
 }
 
 class ModalController {

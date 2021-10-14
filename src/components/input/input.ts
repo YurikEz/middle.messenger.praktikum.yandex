@@ -2,15 +2,15 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface InputProps {
-  name: string,
+  name: string;
   type: 'text' | 'password' | 'email' | 'tel';
-  label?: string,
-  isNotLabel?: boolean,
-  hint?: boolean,
-  hintDescription?: string,
+  label?: string;
+  isNotLabel?: boolean;
+  hint?: boolean;
+  hintDescription?: string;
   placeholder?: string;
   autocomplete?: string;
-  disabled?: boolean,
+  disabled?: boolean;
   value?: string;
   onChange?: () => void;
 }
@@ -24,7 +24,7 @@ export class Input extends Block {
     hint = false,
     hintDescription = '',
     placeholder = '',
-    autocomplete= 'off',
+    autocomplete = 'off',
     disabled = false,
     value = '',
     onChange,

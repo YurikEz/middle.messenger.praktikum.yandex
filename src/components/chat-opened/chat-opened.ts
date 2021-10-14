@@ -4,11 +4,11 @@ import { UserData } from '../../api/UserAPI';
 import Block from '../../utils/Block';
 
 interface ChatOpenedProps {
-  item: ChatData,
-  activePanelButtons: boolean,
-  currentUser: UserData,
-  onClick?: () => void,
-  onChange?: () => void,
+  item: ChatData;
+  activePanelButtons: boolean;
+  currentUser: UserData;
+  onClick?: () => void;
+  onChange?: () => void;
 }
 
 export class ChatOpened extends Block {

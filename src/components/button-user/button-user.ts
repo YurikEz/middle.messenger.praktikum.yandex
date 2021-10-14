@@ -3,8 +3,8 @@ import { UserData } from '../../api/UserAPI';
 import Block from '../../utils/Block';
 
 interface ButtonUserProps {
-  item: UserData,
-  onClick?: () => void,
+  item: UserData;
+  onClick?: () => void;
 }
 
 export class ButtonUser extends Block {

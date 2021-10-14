@@ -34,13 +34,13 @@ export class SignUpPage extends Block {
     }
 
     if ((this.props as Props).user.profile) {
-      (this.props as Props).router.go('/messenger')
+      (this.props as Props).router.go('/messenger');
     }
   }
 
   componentDidUpdate(): boolean {
     if ((this.props as Props).user.profile) {
-      (this.props as Props).router.go('/messenger')
+      (this.props as Props).router.go('/messenger');
     }
 
     return true;

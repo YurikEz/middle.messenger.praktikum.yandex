@@ -22,3 +22,4 @@
 # Ссылки на ```pull request```
 [sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/1)
 [sprint_2](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/2)
+[sprint_3](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/3)

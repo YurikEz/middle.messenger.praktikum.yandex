@@ -4,9 +4,9 @@ import { Props } from '../../utils/types';
 export class HomePage extends Block {
   componentDidMount(): void {
     if ((this.props as Props).user.profile) {
-      (this.props as Props).router.go('/messenger')
+      (this.props as Props).router.go('/messenger');
     } else {
-      (this.props as Props).router.go('/login')
+      (this.props as Props).router.go('/login');
     }
   }
 

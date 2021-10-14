@@ -2,7 +2,7 @@ import './index.scss';
 import Block from '../../utils/Block';
 
 interface ButtonBackProps {
-  href?: string,
+  href?: string;
 }
 
 export class ButtonBack extends Block {

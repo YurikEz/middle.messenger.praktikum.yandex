@@ -1,27 +1,26 @@
 import BaseAPI from './BaseAPI';
 
 export interface UserData {
-  id: number,
-  first_name: string,
-  second_name: string,
-  display_name: string,
-  login: string,
-  email: string,
-  phone: string,
-  avatar: string,
+  id: number;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  login: string;
+  email: string;
+  phone: string;
+  avatar: string;
 }
 
 export interface UserUpdatePasswordProps {
-  oldPassword: string,
-  newPassword: string,
+  oldPassword: string;
+  newPassword: string;
 }
 
 export interface SearchUsersProps {
-  login: string,
+  login: string;
 }
 
-export type UserUpdateProfileProps = Omit<UserData, 'avatar' | 'id'>
-
+export type UserUpdateProfileProps = Omit<UserData, 'avatar' | 'id'>;
 
 export class UserAPI extends BaseAPI {
   constructor() {
@@ -43,7 +42,4 @@ export class UserAPI extends BaseAPI {
   }
 
   read: undefined;
-  delete: undefined;
-  create: undefined;
-  update: undefined;
 }

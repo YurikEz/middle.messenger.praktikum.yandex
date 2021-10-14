@@ -3,8 +3,8 @@ import { ChatData } from '../../api/ChatsAPI';
 import Block from '../../utils/Block';
 
 interface ChatProps {
-  item: ChatData,
-  onClick?: () => void,
+  item: ChatData;
+  onClick?: () => void;
 }
 
 export class Chat extends Block {
