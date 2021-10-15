@@ -1,7 +1,7 @@
 # Проект по созданию чата (Яндекс практикум)
 
 # Команды в проекте
-- Prod Сборка `yarn start || npm run start`
+- Build проекта `yarn build || npm run build`
 - Dev Сборка `yarn dev || npm run dev`
 - Запуск Express без build `yarn server || npm run server`
 - Запустить Eslint `yarn eslint || npm run eslint`
@@ -19,7 +19,9 @@
 - **Color** - Цвета проекта.
 
 # Ссылка на [Netlify](https://trusting-shannon-d97b93.netlify.app/)
+# Ссылка на [Heroku](https://yu-elmanov-chat.herokuapp.com/)
 # Ссылки на ```pull request```
 [sprint_1](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/1)
 [sprint_2](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/2)
 [sprint_3](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/3)
+[sprint_4](https://github.com/YurikEz/middle.messenger.praktikum.yandex/pull/4)
