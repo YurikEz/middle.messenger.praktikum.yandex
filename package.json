@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack build && webpack serve",
+    "build": "webpack build",
     "dev": "webpack serve",
     "server": "node server",
     "eslint": "eslint src",
